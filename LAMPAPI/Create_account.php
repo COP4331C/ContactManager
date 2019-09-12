@@ -6,7 +6,7 @@ $pword = "cop4331";
 $databasename = "database";
 
 // creating connections
-$conn = new mysqli($servername, $name, $pword, $databasename);
+$conn = new mysqli($servername, $uname, $pword, $databasename);
 
 //  check connections
 if(!$conn)

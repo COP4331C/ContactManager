@@ -17,6 +17,12 @@ function goCreateAccount()
 
 }
 
+function goBackHome()
+{
+	hideOrShow("loginDiv", false);
+	hideOrShow("welcomeDiv", true);
+}
+
 function doLogin()
 {
 	userId = 0;

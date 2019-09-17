@@ -2,10 +2,10 @@
 
 $servername = "localhost";
 $uname = "root";
-$Pword = "cop4331";
+$pword = "cop4331";
 $dbname = "database";
 
-$conn = new mysqli($servername, $name, $pword, $databasename);
+$conn = new mysqli($servername, $uname, $pword, $dbname);
 
 //  check connections
 if(!$conn)
@@ -18,9 +18,13 @@ else
   echo "Connect succesfully";
 }
 
-$sql = INSERT INTO contact_list (first_name, last_name, phone,  email, other) VALUES ('TRIET', 'BRYAN', '1234567890', 'Toawesomeforthisproject@gmail.com' , 'null');
+$sql ="INSERT INTO contact_list (first_name, last_name, phone, email, other) VALUES('TRIET', 'BRYAN', 1234567890, 'Toawesomeforthisproject@gmail.com' , 'NULL')";
 
+if($conn->query($sql) === TRUE)
+  echo "New record created successfully";
 
-
-
+else {
+    echo "Error";
+}
+$conn->close()
 ?>

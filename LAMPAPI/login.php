@@ -3,26 +3,31 @@
 	$inData = getRequestInfo();
 	
 	$id = 0;
-	$firstName = "";
-	$lastName = "";
+	$first_name = "";
+	$last_name = "";
 
-	$conn = new mysqli("localhost", "root", "cop4311", "database");
+	$conn = new mysqli("localhost", "root", "cop4331", "database");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-		$sql = "SELECT ID,firstName,lastName FROM Users where email= 'bob@bob.com'";
+		$sql = "SELECT id, first_name, last_name FROM user_list where email= 'bob@bob.com' ";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
+			if (!$result)
+			{
+ 			   trigger_error('Test #1 - invalid num_rows check ' . $conn->error);
+			}
+
 			$row = $result->fetch_assoc();
-			$firstName = $row["firstName"];
-			$lastName = $row["lastName"];
-			$id = $row["ID"];
+			$first_name = $row["first_name"];
+			$last_name = $row["last_name"];
+			$id = $row["id"];
 			
-			returnWithInfo($firstName, $lastName, $id );
+			returnWithInfo($first_name, $last_name, $id );
 			echo "records found successfully\n";
 		}
 		else
@@ -45,13 +50,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"id":0,"first_name":"","last_name":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo( $first_name, $last_name, $id )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"id":' . $id . ',"first_name":"' . $first_name . '","last_name":"' . $last_name . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	

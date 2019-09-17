@@ -27,7 +27,7 @@
 			$last_name = $row["last_name"];
 			$id = $row["id"];
 			
-			returnWithInfo($first_name, $last_name, $id );
+			returnWithInfo($email, $first_name, $last_name, $id );
 			echo "records found successfully\n";
 		}
 		else

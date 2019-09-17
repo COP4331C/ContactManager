@@ -13,7 +13,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT id, first_name, last_name FROM user_list where email= 'bob@bob.com' ";
+		$sql = "SELECT id, first_name, last_name FROM user_list where email=" . $inData["email"] . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{

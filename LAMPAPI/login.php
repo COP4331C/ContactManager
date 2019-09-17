@@ -1,33 +1,58 @@
 <?php
 
-$servername = "localhost";
-$uname = "root";
-$pword = "cop4331";
-$databasename = "database";
+	$inData = getRequestInfo();
+	
+	$id = 0;
+	$firstName = "";
+	$lastName = "";
 
-// creating connections
-$conn = new mysqli($servername, $uname, $pword, $databasename);
+	$conn = new mysqli("localhost", "root", "cop4311", "database");
+	if ($conn->connect_error) 
+	{
+		returnWithError( $conn->connect_error );
+	} 
+	else
+	{
+		$sql = "SELECT ID,firstName,lastName FROM Users where email= 'bob@bob.com'";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0)
+		{
+			$row = $result->fetch_assoc();
+			$firstName = $row["firstName"];
+			$lastName = $row["lastName"];
+			$id = $row["ID"];
+			
+			returnWithInfo($firstName, $lastName, $id );
+			echo "records found successfully\n";
+		}
+		else
+		{
+			returnWithError( "No Records Found" );
+		}
+		$conn->close();
+	}
+	
+	function getRequestInfo()
+	{
+		return json_decode(file_get_contents('php://input'), true);
+	}
 
-//  check connections
-if(!$conn)
-{
-  die("Connection failed: ". $conn->connect_error);
-}
-
-else
-{
-  echo "Connect succesfully";
-}
-
-$sql = "SELECT * FROM `user_list` WHERE `first_name` = 'Bob' ";
-
-if($conn->query($sql) === TRUE)
-  echo "Login successful!";
-
-else {
-    echo "Error";
-}
-$conn->close();
-
-
+	function sendResultInfoAsJson( $obj )
+	{
+		header('Content-type: application/json');
+		echo $obj;
+	}
+	
+	function returnWithError( $err )
+	{
+		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+	
+	function returnWithInfo( $firstName, $lastName, $id )
+	{
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		sendResultInfoAsJson( $retValue );
+	}
+	
 ?>

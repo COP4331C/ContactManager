@@ -1,7 +1,7 @@
 <?php
 
 	$inData = getRequestInfo();
-	
+
 	$id = 0;
 	$first_name = "";
 	$last_name = "";
@@ -14,8 +14,9 @@
 	} 
 	else
 	{
+		$testEmail = "bob@bob.com";
 		$email = $inData["email"];
-		$sql = "SELECT id, first_name, last_name FROM user_list where email='" . $inData["email"] . "'";
+		$sql = "SELECT id, first_name, last_name FROM user_list where email='". $email ."'";
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0)
@@ -30,7 +31,7 @@
 			$last_name = $row["last_name"];
 			$id = $row["id"];
 			
-			returnWithInfo($inData["email"], $first_name, $last_name, $id );
+			returnWithInfo($first_name, $last_name, $id );
 			echo "records found successfully\n";
 		}
 		else

@@ -7,14 +7,17 @@
 	$last_name = "";
 
 	$conn = new mysqli("localhost", "root", "cop4331", "database");
+
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-		$sql = "SELECT id, first_name, last_name FROM user_list where email=" . $inData["email"] . "'";
+		$email = $inData["email"];
+		$sql = "SELECT id, first_name, last_name FROM user_list where email='" . $inData["email"] . "'";
 		$result = $conn->query($sql);
+
 		if ($result->num_rows > 0)
 		{
 			if (!$result)
@@ -27,12 +30,12 @@
 			$last_name = $row["last_name"];
 			$id = $row["id"];
 			
-			returnWithInfo($email, $first_name, $last_name, $id );
+			returnWithInfo($inData["email"], $first_name, $last_name, $id );
 			echo "records found successfully\n";
 		}
 		else
 		{
-			returnWithError( "No Records Found" );
+			returnWithError( $email );
 		}
 		$conn->close();
 	}

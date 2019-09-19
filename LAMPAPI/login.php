@@ -14,7 +14,6 @@
 	} 
 	else
 	{
-		$testEmail = "bob@bob.com";
 		$email = $inData["email"];
 		$sql = "SELECT id, first_name, last_name FROM user_list where email='". $email ."'";
 		$result = $conn->query($sql);

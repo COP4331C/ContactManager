@@ -2,27 +2,23 @@
 
 $inData = getRequestInfo();
 
-$id = 0;
-$firstname = "";
-
-
 $conn = new mysqli("localhost", "root", "cop4331", "database");
 
-if(!$conn->connect_error)
+if(!$conn->conn_error)
 {
   returnWithError($conn->connect_error);
 }
 
 else
 {
-  $sql = "DELETE FROM contact_list where  First=" . $inData["first_name"] . "'and last_name='" . $inData["last_name"]
-  . "'and phone='" . $inData["phone"] . "'and email='" . $inData["email"] . "'and id='" . $indata["id"] . "'";
+  $sql = "UPDATE contact_list SET first_name = '$inData["first_name"]'" . "'and last_name='" . $inData["last_name"] . "'and phone='" . $inData["phone"] . "'and email='" . $inData["email"] .
+  . "' WHERE cid =  '$inData["cid"]'";
 
   $result = $conn->query($sql);
   if($result->num_row > 0)
   {
     $row = $result->fetch->fetch_assoc();
-    $id = $row["id"];
+    $cid = $row["cid"];
     $first_name = $row["first_name"];
     $last_name = $row["last_name"];
     $phone = $row["phone"];
@@ -35,7 +31,6 @@ else
     returnWithError("No Records Found");
   }
   $conn->close();
-
 }
 
 function getRequestInfo()
@@ -51,14 +46,19 @@ function getRequestInfo()
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","phone":"","email":"","error":"' . $err . '"}';
+		$retValue = '{"cid":0,"firstName":"","lastName":"","phone":"","email":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"id":' . $id . ',"first_name":"' . $first_name . '","last_name":"' . $last_name . '","phone":"'. $phone . '","email":"' . $email . '","error":""}';
+		$retValue = '{"cid":' . $cid . ',"first_name":"' . $first_name . '","last_name":"' . $last_name . '","phone":"'. $phone . '","email":"' . $email . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
+
+
+
+
+
 
 ?>

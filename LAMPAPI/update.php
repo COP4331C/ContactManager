@@ -11,8 +11,7 @@ if(!$conn->conn_error)
 
 else
 {
-  $sql = "UPDATE contact_list SET first_name = '$inData["first_name"]'" . "'and last_name='" . $inData["last_name"] . "'and phone='" . $inData["phone"] . "'and email='" . $inData["email"] .
-  . "' WHERE cid =  '$inData["cid"]'";
+  $sql = "UPDATE contact_list SET first_name = '" . $inData["first_name"] . "' and last_name= '" . $inData["last_name"] . "' and phone= '" . $inData["phone"] . "' and email= '" . $inData["email"] . "' WHERE cid = '" $inData["cid"] "'";
 
   $result = $conn->query($sql);
   if($result->num_row > 0)

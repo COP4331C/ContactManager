@@ -51,6 +51,17 @@ body
     font-family: 'Ubuntu', sans-serif;
 }
 
+.button1
+{
+	background-color: #666699
+	border: none;
+	padding: 13px 30px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 10px;
+	display: inline-block;
+}
+
 .buttons:hover{
     background-color: #00d5124f;
     color: #FFFFFF;

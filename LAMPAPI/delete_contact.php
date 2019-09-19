@@ -15,7 +15,7 @@ if(!$conn->connect_error)
 
 else
 {
-  $sql = "DELETE FROM contact_list where  First=" . $inData["first_name"] . "'and last_name='" . $inData["last_name"]
+  $sql = "DELETE FROM contact_list where  first_name=" . $inData["first_name"] . "'and last_name='" . $inData["last_name"]
   . "'and phone='" . $inData["phone"] . "'and email='" . $inData["email"] . "'and id='" . $indata["id"] . "'";
 
   $result = $conn->query($sql);

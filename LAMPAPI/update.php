@@ -4,7 +4,7 @@ $inData = getRequestInfo();
 
 $conn = new mysqli("localhost", "root", "cop4331", "database");
 
-if(!$conn->conn_error)
+if(!$conn->connect_error)
 {
   returnWithError($conn->connect_error);
 }
@@ -13,7 +13,7 @@ else
 {
 	// $sql = "UPDATE contact_list SET first_name = '" . $inData["first_name"] . "', last_name= '" . $inData["last_name"] . "', phone= '" . $inData["phone"] . "', email= '" . $inData["email"] . "' WHERE contact list . cid = '" . $inData["cid"] . "'";
 
-	$sql = "UPDATE `user_list` SET `email` = 'shrek@theswamp.net' WHERE `user_list`.`id` = 3";
+	$sql = "UPDATE `user_list` SET `email` = 'shrek@theswamp.com' WHERE `user_list`.`id` = 3";
 
 	$result = $conn->query($sql);
 	if($result->num_row > 0)

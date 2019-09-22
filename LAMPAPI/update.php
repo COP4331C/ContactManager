@@ -11,6 +11,7 @@ if($conn->connect_error)
 
 else
 {
+	$cid = $inData["cid"];
 	$sql = "UPDATE contact_list SET first_name = '" . $inData["first_name"] . "', last_name= '" . $inData["last_name"] . "', phone= '" . $inData["phone"] . "', email= '" . $inData["email"] . "' WHERE contact list . cid = '" . $inData["cid"] . "'";
 
 	// Uncomment to test just a basic string that i pulled from phpMyAdmin
@@ -19,7 +20,7 @@ else
 	$result = $conn->query($sql);
 	if($result->num_row > 0)
 	{
-		echo "Entry with CID = 2 found\n";
+		echo "Entry with CID = " . $cid . " found\n";
 		$row = $result->fetch->fetch_assoc();
 		$cid = $row["cid"];
 		//$first_name = $row["first_name"];

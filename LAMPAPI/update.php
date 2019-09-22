@@ -18,17 +18,19 @@ else
 	$result = $conn->query($sql);
 	if($result->num_row > 0)
 	{
+		echo "Entry with CID = 2 found\n";
 		$row = $result->fetch->fetch_assoc();
 		$cid = $row["cid"];
-		$first_name = $row["first_name"];
-		$last_name = $row["last_name"];
-		$phone = $row["phone"];
+		//$first_name = $row["first_name"];
+		//$last_name = $row["last_name"];
+		//$phone = $row["phone"];
 		$email = $row["email"];
 	
 		returnWithInfo($id, $first_name, $last_name, $phone, $email);
 	}
 	else
 	{
+		echo "Entry with CID = 2 not found\n";
 		returnWithError('No Records Found');
 	}
 

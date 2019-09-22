@@ -12,6 +12,7 @@ if(!$conn->connect_error)
 else
 {
 	$cid = $inData["cid"];
+	echo = $cid;
 	$sql = "UPDATE contact_list SET first_name = '" . $inData["first_name"] . "', last_name= '" . $inData["last_name"] . "', phone= '" . $inData["phone"] . "', email= '" . $inData["email"] . "' WHERE contact list . cid = '" . $inData["cid"] . "'";
 
 	// Uncomment to test just a basic string that i pulled from phpMyAdmin

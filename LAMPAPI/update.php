@@ -4,7 +4,7 @@ $inData = getRequestInfo();
 
 $conn = new mysqli("localhost", "root", "cop4331", "database");
 
-if(!$conn->connect_error)
+if($conn->connect_error)
 {
   returnWithError($conn->connect_error);
 }
@@ -51,7 +51,11 @@ function getRequestInfo()
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":null,"first_name":null,"last_name":null,"error":"' . $err . '"}';
+		if ($err = $conn->connect_error)
+			$retValue = '{"error":"Connection error"}';
+		else
+			$retValue = '{"id":null,"first_name":null,"last_name":null,"error":"' . $err . '"}';
+
 		sendResultInfoAsJson( $retValue );
 	}
 

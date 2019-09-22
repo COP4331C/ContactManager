@@ -13,7 +13,7 @@ else
 {
 	// $sql = "UPDATE contact_list SET first_name = '" . $inData["first_name"] . "', last_name= '" . $inData["last_name"] . "', phone= '" . $inData["phone"] . "', email= '" . $inData["email"] . "' WHERE contact list . cid = '" . $inData["cid"] . "'";
 
-	$sql = "UPDATE `contact_list` SET `email` = 'donkey@dragonscastle.net' WHERE `contact_list`.`cid` = 2";
+	$sql = "UPDATE `contact_list` SET `email` = 'donkey@classtraitor.net' WHERE `contact_list`.`cid` = 2";
 
 	$result = $conn->query($sql);
 	if($result->num_row > 0)

@@ -20,22 +20,16 @@
 
 		if ($result->num_rows > 0)
 		{
-			if (!$result)
-			{
- 			   trigger_error('Test #1 - invalid num_rows check ' . $conn->error);
-			}
-
 			$row = $result->fetch_assoc();
 			$first_name = $row["first_name"];
 			$last_name = $row["last_name"];
 			$id = $row["id"];
 			
-			returnWithInfo($first_name, $last_name, $id );
-			echo "records found successfully\n";
+			returnWithInfo($first_name, $last_name, $id);
 		}
 		else
 		{
-			returnWithError( $email );
+			returnWithError('Error: No user with email = ' . $email . ' found.');
 		}
 		$conn->close();
 	}
@@ -53,13 +47,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"first_name":"","last_name":"","error":"' . $err . '"}';
+		$retValue = '{"id":null,"first_name":null,"last_name":null,"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
 	function returnWithInfo( $first_name, $last_name, $id )
 	{
-		$retValue = '{"id":' . $id . ',"first_name":"' . $first_name . '","last_name":"' . $last_name . '","error":""}';
+		$retValue = '{"id":' . $id . ',"first_name":"' . $first_name . '","last_name":"' . $last_name . '","message":"Records found. Welcome!"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	

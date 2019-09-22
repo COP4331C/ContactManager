@@ -11,7 +11,7 @@ if(!$conn->conn_error)
 
 else
 {
-  $sql = "UPDATE contact_list SET first_name = '" . $inData["first_name"] . "' and last_name= '" . $inData["last_name"] . "' and phone= '" . $inData["phone"] . "' and email= '" . $inData["email"] . "' WHERE cid = '" . $inData["cid"] . "'";
+  $sql = "UPDATE contact_list SET first_name = '" . $inData["first_name"] . "', last_name= '" . $inData["last_name"] . "', phone= '" . $inData["phone"] . "', email= '" . $inData["email"] . "' WHERE contact list . cid = '" . $inData["cid"] . "'";
 
   $result = $conn->query($sql);
   if($result->num_row > 0)
@@ -27,7 +27,7 @@ else
   }
   else
   {
-    returnWithError("No Records Found");
+    returnWithError('No Records Found');
   }
   $conn->close();
 }
@@ -45,7 +45,7 @@ function getRequestInfo()
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"cid":0,"firstName":"","lastName":"","phone":"","email":"","error":"' . $err . '"}';
+		$retValue = '{"id":null,"first_name":null,"last_name":null,"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 

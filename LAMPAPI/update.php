@@ -61,7 +61,7 @@ function getRequestInfo()
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo($cid, $first_name, $last_name, $phone, $email)
 	{
 		$retValue = '{"cid":' . $cid . ',"first_name":"' . $first_name . '","last_name":"' . $last_name . '","phone":"'. $phone . '","email":"' . $email . '","error":""}';
 		sendResultInfoAsJson( $retValue );

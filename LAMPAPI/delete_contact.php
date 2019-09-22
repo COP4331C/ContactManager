@@ -15,9 +15,11 @@ if(!$conn->connect_error)
 
 else
 {
-  $sql = "DELETE FROM contact_list where  first_name=" . $inData["first_name"] . "'and last_name='" . $inData["last_name"]
-  . "'and phone='" . $inData["phone"] . "'and email='" . $inData["email"] . "'and id='" . $indata["id"] . "'";
-
+	
+//  $sql = "DELETE FROM contact_list where first_name='" . $inData["first_name"] . "'and last_name='" . $inData["last_name"] . "'and phone='" . $inData["phone"] . "'and email='" . $inData["email"] . "'and id='" . $indata["id"] . "'";
+  
+  // Trying to see if using just id + cid makes it any easier - clyde
+  $sql = "DELETE FROM contact_list where cid='" . $inData["cid"] . "' and id='" . $inData["id"] . "'";
   $result = $conn->query($sql);
   if($result->num_row > 0)
   {

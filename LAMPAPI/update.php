@@ -6,7 +6,7 @@ $conn = new mysqli("localhost", "root", "cop4331", "database");
 
 if($conn->connect_error)
 {
-	echo 1 . $conn->connect_error
+	echo 1 . $conn->connect_error;
   returnWithError($conn->connect_error);
 }
 

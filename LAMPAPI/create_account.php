@@ -99,15 +99,12 @@ if($conn->query($sql) === TRUE)
   $last_name = $row["last_name"];
   $phone = $row["phone"]; 
   $email = $row["email"];
- 
+  $conn->close();
 
   returnWithInfo($first_name, $last_name, $phone, $email);
 }
-else 
-{
-   returnWithError("Account Creation Failed!" )
-}
-$conn->close();
+else
+  returnWithError("Account Creation Failed!" )
 
 function getRequestInfo()
 {

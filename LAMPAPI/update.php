@@ -52,10 +52,10 @@ function getRequestInfo()
 	}
 
 	function returnWithError( $err )
-	{	echo $err;
-		if ($err = 'conn_err')
-			$retValue = '{"error":"Connection error"}';
-		else
+	{	//echo $err;
+		//if ($err = 'conn_err')
+			//$retValue = '{"error":"Connection error"}';
+		//else
 			$retValue = '{"id":null,"first_name":null,"last_name":null,"error":"' . $err . '"}';
 
 		sendResultInfoAsJson( $retValue );

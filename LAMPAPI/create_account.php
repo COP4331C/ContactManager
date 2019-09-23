@@ -97,9 +97,9 @@ if($conn->query($sql) === TRUE)
   //$last_name = $row["last_name"];
   $last_name = $inData["last_name"];
   //$phone = $row["phone"]; 
-  $phone = $inData["phone"]
+  $phone = $inData["phone"];
   //$email = $row["email"];
-  $email = $inData["email"]
+  $email = $inData["email"];
   $conn->close();
 
   returnWithInfo($first_name, $last_name, $phone, $email);

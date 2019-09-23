@@ -18,7 +18,7 @@ else
 	//$sql = "UPDATE `contact_list` SET `email` = 'donkey@classtraitor.net' WHERE `contact_list`.`cid` = 2";
 
 	$result = $conn->query($sql);
-	if($result->num_rows > 0)
+	if($result->num_rows <= 0)
 	{
 		echo "Entry with CID = " . $cid . " found\n";
 		$row = $result->fetch->fetch_assoc();

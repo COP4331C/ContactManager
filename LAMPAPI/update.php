@@ -34,7 +34,7 @@ else
 	else
 	{
 		//echo "Entry with CID = 2 not found\n";
-		returnWithError('No Records Found');
+		returnWithError('nothing has been updated');
 	}
 
 $conn->close();

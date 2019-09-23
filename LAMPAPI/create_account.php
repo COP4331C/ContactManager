@@ -36,7 +36,7 @@ if($result->num_row > 0)
 }
 else
 {
-			returnWithError( "No Records Found" );
+    returnWithError( "Contact Failed to be added" );
 }
 $conn->close();
 

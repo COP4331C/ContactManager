@@ -21,7 +21,7 @@ else
   echo "Connect succesfully";
 }
 
-$sql = "INSERT INTO user_list (first_name, last_name, phone, email, other_info, email_verification) VALUES('$inData["first_name"]', '$inData["last_name"]', $inData["phone"], '$inData["email"]', 'null', '0')";
+$sql = "INSERT INTO user_list (first_name, last_name, phone, email, other_info, email_verification) VALUES('$inData["first_name"]', '$inData["last_name"]', '$inData["phone"]', '$inData["email"]', 'null', '0')";
 $result = $conn->query($sql);
 if($result->num_row > 0)
 {

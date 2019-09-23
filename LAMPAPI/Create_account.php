@@ -67,5 +67,4 @@ function returnWithInfo( $firstName, $lastName, $email, $phone )
   sendResultInfoAsJson( $retValue );
 }
 
-
 ?>

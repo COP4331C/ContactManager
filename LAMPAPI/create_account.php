@@ -104,7 +104,9 @@ if($conn->query($sql) === TRUE)
   returnWithInfo($first_name, $last_name, $phone, $email);
 }
 else
+{
   returnWithError("Account Creation Failed!" )
+}
 
 function getRequestInfo()
 {

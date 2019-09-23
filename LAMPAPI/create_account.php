@@ -88,7 +88,7 @@ else
 
 //$sql = "INSERT INTO user_list (first_name, last_name, phone, email, other_info, email_verification) VALUES('Ben', 'clyde', '1234567890', 'awesomesauce@gmail.com', 'null', '0')";
 
-$sql = "INSERT INTO `user_list` (first_name, last_name, phone, email, pass) VALUES('" . $inData["first_name"] . "', '" . $inData["last_name"] "', '" . $inData["phone"] . "', '" . $inData["email"]. "')";
+$sql = "INSERT INTO `user_list` (first_name, last_name, phone, email, pass) VALUES('" . $inData["first_name"] . "', '" . $inData["last_name"] . "', '" . $inData["phone"] . "', '" . $inData["email"]. "')";
 
 if($conn->query($sql) === TRUE)
 {

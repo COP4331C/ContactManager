@@ -26,12 +26,14 @@ $result = $conn->query($sql);
 if($result->num_row <= 0)
 {
     $row = $result->fetch->fetch_assoc();
+    $email = $row["email"];
+    $pass = $row["pass"]
     $first_name = $row["first_name"];
     $last_name = $row["last_name"];
     $phone = $row["phone"];
     $email = $row["email"];
 
-    returnWithInfo($first_name, $last_name, $phone, $email);
+    returnWithInfo($email, $pass, $first_name, $last_name, $phone, $email);
  
 }
 else
@@ -57,9 +59,9 @@ function returnWithError( $err )
 		sendResultInfoAsJson( $retValue );
 }
 
-function returnWithInfo( $first_name, $last_name, $phone, $email )
+function returnWithInfo($email, $pass, $first_name, $last_name, $phone, $email);
 {
-	$retValue = '{"first_name":"' . $first_name . '","last_name":"' . $last_name . '","phone":"'. $phone . '","email":"' . $email .'","message":"Contact has been added!"}';
+	$retValue = '{"email":"' . $email . '","pass":"' . $pass . '","first_name":"' . $first_name . '","last_name":"' . $last_name . '","phone":"'. $phone . '","email":"' . $email .'","message":"Contact has been added!"}';
 	sendResultInfoAsJson( $retValue );
 }
 

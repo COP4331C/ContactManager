@@ -106,7 +106,7 @@ if($conn->query($sql) === TRUE)
 }
 else
 {
-  returnWithError("Account Creation Failed!" )
+  returnWithError("Account Creation Failed!");
 }
 
 

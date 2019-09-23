@@ -52,7 +52,7 @@ function getRequestInfo()
 	}
 
 	function returnWithError( $err )
-	{
+	{	echo $err;
 		if ($err = 'conn_err')
 			$retValue = '{"error":"Connection error"}';
 		else

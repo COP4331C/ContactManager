@@ -76,9 +76,9 @@ $databasename = "database";
 $conn = new mysqli($servername, $uname, $pword, $databasename);
 
 //  check connections
-if(!$conn)
+if(!$conn->conn_error)
 {
-  die("Connection failed: ". $conn->connect_error);
+  returnWithError($conn->connect_error);
 }
 
 else

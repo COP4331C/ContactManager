@@ -30,7 +30,7 @@ else
     $email = ["email"];
     $conn->close();
     
-    returnWithInfo($id, $first_name, $last_name, $phone, $email);
+    returnWithInfo($id, $firstName, $lastName, $phone, $email);
     
   }
   else 
@@ -56,7 +56,7 @@ function returnWithError( $err )
   $retValue = '{"id":"0","firstName":"","lastName":"","phone":"","email":"","error":"' . $err . '"}';
   sendResultInfoAsJson( $retValue );
 }
-function returnWithInfo( $id, $firstName, $lastName, $email, $phone)
+function returnWithInfo( $id, $firstName, $lastName, $phone, $email)
 {
   $retValue = '{"id":"'. $id . '","first_name":"' . $firstName . '","last_name":"' . $lastName . '","phone":"'. $phone . '","email":"' . $email . '","error":""}';
   sendResultInfoAsJson( $retValue );

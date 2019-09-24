@@ -11,7 +11,7 @@ $databasename = "database";
 $conn = new mysqli($servername, $uname, $pword, $databasename);
 
 //  check connections
-if(!$conn->conn_error)
+if($conn->conn_error)
 {
   returnWithError($conn->connect_error);
 }

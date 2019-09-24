@@ -8,7 +8,7 @@ $firstname = "";
 
 $conn = new mysqli("localhost", "root", "cop4331", "database");
 
-if(!$conn->connect_error)
+if($conn->connect_error)
 {
   returnWithError($conn->connect_error);
 }

@@ -22,7 +22,7 @@ else
   //$sql = "DELETE FROM contact_list where cid='" . $inData["cid"] . "' and id='" . $inData["id"] . "'";
   $sql = "DELETE FROM contact_list where cid = '". $inData["cid"] . "' and id ='" . $inData["id"] . "'";
   $result = $conn->query($sql);
-  if($result->num_row > 0)
+  if($result->num_rows > 0)
   {
     $row = $result->fetch->fetch_assoc();
     $cid = $row["cid"];

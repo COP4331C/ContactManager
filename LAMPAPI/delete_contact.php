@@ -10,7 +10,7 @@ $conn = new mysqli("localhost", "root", "cop4331", "database");
 
 if($conn->connect_error)
 {
-  returnWithError($conn->connect_error);
+  returnWithError("Connection Failed");
 }
 
 else
@@ -20,7 +20,7 @@ else
   
   // Trying to see if using just id + cid makes it any easier - clyde
   //$sql = "DELETE FROM contact_list where cid='" . $inData["cid"] . "' and id='" . $inData["id"] . "'";
-  $sql = "DELETE FROM contact_list where cid = '". $inData["cid"] . "' and id ='" . $inData["id"] . "'";
+  $sql = "DELETE FROM `contact_list` where cid = '". $inData["cid"] . "' and id ='" . $inData["id"] . "'";
   $result = $conn->query($sql);
   if($result->num_rows > 0)
   {

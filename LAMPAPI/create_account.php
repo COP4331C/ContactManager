@@ -38,7 +38,7 @@ else
 	$pass = $inData["password"]
   	$conn->close();
 
-  	returnWithInfo($first_name, $last_name, $phone, $email, $password);
+  	returnWithInfo($first_name, $last_name, $phone, $email, $pass);
 	}
 	
 	else

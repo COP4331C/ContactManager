@@ -55,7 +55,7 @@ else
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","phone":"","email":"","error":"' . $err . '"}';
+		$retValue = '{"id":0,"cid":0,"firstName":"","lastName":"","phone":"","email":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 

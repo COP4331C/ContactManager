@@ -35,9 +35,10 @@ else
   	$phone = $inData["phone"];
   	//$email = $row["email"];
   	$email = $inData["email"];
+	$pass = $inData["password"]
   	$conn->close();
 
-  	returnWithInfo($first_name, $last_name, $phone, $email);
+  	returnWithInfo($first_name, $last_name, $phone, $email, $password);
 	}
 	
 	else
@@ -65,9 +66,9 @@ function returnWithError( $err )
   sendResultInfoAsJson( $retValue );
 }
 
-function returnWithInfo( $firstName, $lastName, $email, $phone )
+function returnWithInfo( $firstName, $lastName, $email, $phone, $password )
 {
-  $retValue = '{"first_name":"' . $first_name . '","last_name":"' . $last_name . '","phone":"'. $phone . '","email":"' . $email . '","error":""}';
+  $retValue = '{"first_name":"' . $first_name . '","last_name":"' . $last_name . '","phone":"'. $phone . '","email":"' . $email . '","password":"' . $password .'","error":""}';
   sendResultInfoAsJson( $retValue );
 }
 

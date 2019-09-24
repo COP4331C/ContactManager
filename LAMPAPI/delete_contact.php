@@ -21,10 +21,10 @@ else
   // Trying to see if using just id + cid makes it any easier - clyde
   //$sql = "DELETE FROM contact_list where cid='" . $inData["cid"] . "' and id='" . $inData["id"] . "'";
   $sql = "DELETE FROM `contact_list` where cid = '". $inData["cid"] . "' and id ='" . $inData["id"] . "'";
-  $result = $conn->query($sql);
+  //$result = $conn->query($sql);
   if($conn->query($sql) === True)
   {
-    $row = $result->fetch->fetch_assoc();
+    //$row = $result->fetch->fetch_assoc();
     $cid = $inData["cid"];
     $id = $inData["id"];
     $first_name = $inData["first_name"];

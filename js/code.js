@@ -35,8 +35,8 @@ function doLogin()
 	document.getElementById("loginResult").innerHTML = "";
 	
 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
-	//var url = urlBase + '/Login.' + extension;
-	var url = urlBase + '/contacts.html';
+	var url = urlBase + '/login.' + extension;
+// 	var url = urlBase + '/contacts.html';
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);

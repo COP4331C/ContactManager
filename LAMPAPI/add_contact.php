@@ -19,7 +19,7 @@ else
 {
 
   //$sql ="INSERT INTO contact_list (id, first_name, last_name, phone, email) VALUES('34','TRIET', 'BRYAN', 1234567890, 'Toawesomeforthisproject@gmail.com' , 'NULL')";
-  $sql = "INSERT INTO `contact_list` (id, first_name, last_name, phone, email) VALUES('" . $inData["id"] . "', '" . $inData["first_name"] . "', '" . $inData["last_name"] . "', '" . $inData["phone"] . "', '" . $inData["email"] .  "')";
+  $sql = "INSERT INTO `contact_list` (id, first_name, last_name, phone, email) VALUES('" . $inData["id"] . "', '" . $inData["first_name"] . "', '" . $inData["last_name"] . "', '" . $inData["phone"] . "', '" . $inData["email"] . "', '" . $inData["address"] . "')";
   if($conn->query($sql) === TRUE)
   {
     echo "New record created successfully";

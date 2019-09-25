@@ -20,7 +20,7 @@ else
 {
 	//$sql = "INSERT INTO user_list (first_name, last_name, phone, email, other_info, email_verification) VALUES('Ben', 'clyde', '1234567890', 'awesomesauce@gmail.com', 'null', '0')";
 
-	$sql = "INSERT INTO `user_list` (first_name, last_name, phone, email, pass) VALUES('" . $inData["first_name"] . "', '" . $inData["last_name"] . "', '" . $inData["phone"] . "', '" . $inData["email"] ."','" . $inData["password"] . "')";
+	$sql = "INSERT INTO `user_list` (first_name, last_name, phone, email, pass, address) VALUES('" . $inData["first_name"] . "', '" . $inData["last_name"] . "', '" . $inData["phone"] . "', '" . $inData["email"] ."','" . $inData["password"] . "','". $inData["address"] . "')";
 
 	if($conn->query($sql) === TRUE)
 	{
@@ -36,9 +36,10 @@ else
   	//$email = $row["email"];
   	$email = $inData["email"];
 	$pass = $inData["password"];
+	$address = $inData["address"]
   	$conn->close();
 
-  	returnWithInfo($first_name, $last_name, $phone, $email, $pass);
+  	returnWithInfo($first_name, $last_name, $phone, $email, $pass, $address);
 	}
 	
 	else
@@ -66,9 +67,9 @@ function returnWithError( $err )
   sendResultInfoAsJson( $retValue );
 }
 
-function returnWithInfo( $firstName, $lastName, $email, $phone, $password )
+function returnWithInfo( $firstName, $lastName, $email, $phone, $password, $address )
 {
-  $retValue = '{"first_name":"' . $firstName . '","last_name":"' . $lastName . '","phone":"'. $phone . '","email":"' . $email . '","password":"' . $password .'","error":""}';
+  $retValue = '{"first_name":"' . $firstName . '","last_name":"' . $lastName . '","phone":"'. $phone . '","email":"' . $email . '","password":"' . $password . '","address":"' . $address . '","error":""}';
   sendResultInfoAsJson( $retValue );
 }
 

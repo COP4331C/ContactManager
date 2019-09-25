@@ -36,7 +36,7 @@ else
   	//$email = $row["email"];
   	$email = $inData["email"];
 	$pass = $inData["password"];
-	$address = $inData["address"]
+	$address = $inData["address"];
   	$conn->close();
 
   	returnWithInfo($first_name, $last_name, $phone, $email, $pass, $address);

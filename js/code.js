@@ -45,6 +45,8 @@ function doLogin()
 	{
 		xhr.send(jsonPayload);
 		
+		xhr.onreadystatechange = function()
+		
 		var jsonObject = JSON.parse( xhr.responseText );
 		
 		userId = jsonObject.id;

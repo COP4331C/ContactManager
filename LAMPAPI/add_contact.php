@@ -24,13 +24,14 @@ $conn = new mysqli($servername, $uname, $pword, $dbname);
   {
     echo "New record created successfully";
     $id = $inData["id"];
-    $firstName = ["first_name"];
-    $lastName = ["last_name"];
-    $phone = ["phone"];
-    $email = ["email"];
+    $firstName = $inData["first_name"];
+    $lastName = $inData["last_name"];
+    $phone = $inData["phone"];
+    $email = $inData["email"];
+    $address = $inData["address"];
     $conn->close();
     
-    returnWithInfo($id, $firstName, $lastName, $phone, $email);
+    returnWithInfo($id, $firstName, $lastName, $phone, $email, $address);
     
   }
   else 
@@ -53,12 +54,12 @@ function sendResultInfoAsJson( $obj )
 }
 function returnWithError( $err )
 {
-  $retValue = '{"id":"0","firstName":"","lastName":"","phone":"","email":"","error":"' . $err . '"}';
+  $retValue = '{"id":"0","firstName":"","lastName":"","phone":"","email":"","address":"","error":"' . $err . '"}';
   sendResultInfoAsJson( $retValue );
 }
-function returnWithInfo( $id, $firstName, $lastName, $phone, $email)
+function returnWithInfo( $id, $firstName, $lastName, $phone, $email, $address)
 {
-  $retValue = '{"id":"'. $id . '","first_name":"' . $firstName . '","last_name":"' . $lastName . '","phone":"'. $phone . '","email":"' . $email . '","error":""}';
+  $retValue = '{"id":"'. $id . '","first_name":"' . $firstName . '","last_name":"' . $lastName . '","phone":"'. $phone . '","email":"' . $email . '","address":"' . $address . '","error":""}';
   sendResultInfoAsJson( $retValue );
 }
 

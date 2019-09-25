@@ -1,5 +1,5 @@
 
-var urlBase = 'http://ec2-52-14-204-105.us-east-2.compute.amazonaws.com/LAMPAPI';
+var urlBase = 'http://ec2-52-14-204-105.us-east-2.compute.amazonaws.com/ContactManager';
 var extension = "php";
 
 var userId = 0;
@@ -35,7 +35,8 @@ function doLogin()
 	document.getElementById("loginResult").innerHTML = "";
 	
 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
-	var url = urlBase + '/Login.' + extension;
+	//var url = urlBase + '/Login.' + extension;
+	var url = urlBase + '/contacts.html';
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);

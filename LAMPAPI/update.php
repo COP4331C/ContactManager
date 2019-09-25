@@ -25,7 +25,7 @@ else
 		$last_name = $inData["last_name"];
 		$phone = $inData["phone"];
 		$email = $inData["email"];
-		$address = $inData["address"]
+		$address = $inData["address"];
 	
 		returnWithInfo($cid, $first_name, $last_name, $phone, $email, $address);
 	}

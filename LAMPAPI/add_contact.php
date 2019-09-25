@@ -10,10 +10,10 @@ $dbname = "database";
 $conn = new mysqli($servername, $uname, $pword, $dbname);
 
 //  check connections
-if($conn->conn_error)
+/*if($conn->conn_error)
 {
   returnWithError("Connection failed: ");
-}
+}*/
 
 else
 {

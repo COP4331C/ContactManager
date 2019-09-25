@@ -37,8 +37,10 @@ function filterTable() {
 	
 	for (var i = 1, row; row = table.rows[i]; i++) {
 		for (var j = 1, col; col = row.cells[j]; j++) {
-			if (col.innerText.includes(search.value))
+			if (col.textContent.toUpperCase().includes(search.value.toUpperCase())) {
 				row.style.display = "";
+				break;
+			}
 			else
 				row.style.display = "none";
 		}

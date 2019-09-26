@@ -90,14 +90,14 @@ function doCreateAccount()
 
 function goBackHome()
 {
-	document.getElementById("loginName").value = "";
-	document.getElementById("loginPassword").value = "";
-	document.getElementById("cloginName").value = "";
-	document.getElementById("cloginPassword").value = "";
-	document.getElementById("phone").value = "";
-	document.getElementById("firstName").value = "";
-	document.getElementById("lastName").value = "";
-	document.getElementById("address").value = "";
+	// document.getElementById("loginName").value = "";
+	// document.getElementById("loginPassword").value = "";
+	// document.getElementById("cloginName").value = "";
+	// document.getElementById("cloginPassword").value = "";
+	// document.getElementById("phone").value = "";
+	// document.getElementById("firstName").value = "";
+	// document.getElementById("lastName").value = "";
+	// document.getElementById("address").value = "";
 	hideOrShow("loginDiv", false);
 	hideOrShow("welcomeDiv", true);
 	hideOrShow("createDiv", false);
@@ -185,77 +185,4 @@ function hideOrShow( elementId, showState )
 
 	document.getElementById( elementId ).style.visibility = vis;
 	document.getElementById( elementId ).style.display = dis;
-}
-
-function addColor()
-{
-	var newColor = document.getElementById("colorText").value;
-	document.getElementById("colorAddResult").innerHTML = "";
-
-	var jsonPayload = '{"color" : "' + newColor + '", "userId" : ' + userId + '}';
-	var url = urlBase + '/AddColor.' + extension;
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("colorAddResult").innerHTML = err.message;
-	}
-
-}
-
-function searchColor()
-{
-	var srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
-
-	var colorList = document.getElementById("colorList");
-	colorList.innerHTML = "";
-
-	var jsonPayload = '{"search" : "' + srch + '"}';
-	var url = urlBase + '/SearchColors.' + extension;
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				hideOrShow( "colorList", true );
-
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
-				var jsonObject = JSON.parse( xhr.responseText );
-
-				var i;
-				for( i=0; i<jsonObject.results.length; i++ )
-				{
-					var opt = document.createElement("option");
-					opt.text = jsonObject.results[i];
-					opt.value = "";
-					colorList.options.add(opt);
-				}
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("colorSearchResult").innerHTML = err.message;
-	}
-
 }

@@ -25,8 +25,8 @@ function doCreateAccount()
 	userId = 0;
 	document.getElementById("loginResult").innerHTML = "";
 
-	var login = document.getElementById("loginName").value;
-	var password = document.getElementById("loginPassword").value;
+	var login = document.getElementById("cloginName").value;
+	var password = document.getElementById("cloginPassword").value;
 	var phone = document.getElementById("phone").value;
 	var first_Name = document.getElementById("firstName").value;
 	var last_Name = document.getElementById("lastName").value;
@@ -64,8 +64,8 @@ function doCreateAccount()
 				
 				document.getElementById("userName").innerHTML = firstName + " " + lastName;
 				
-				document.getElementById("loginName").value = "";
-				document.getElementById("loginPassword").value = "";
+				document.getElementById("cloginName").value = "";
+				document.getElementById("cloginPassword").value = "";
 				
 				hideOrShow( "loginDiv", false);
 				hideOrShow("welcomeDiv", false);

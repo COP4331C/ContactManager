@@ -1,5 +1,5 @@
 
-var urlBase = 'http://ec2-18-191-105-89.us-east-2.compute.amazonaws.com/LAMPAPI';
+var urlBase = 'http://ec2-18-191-105-89.us-east-2.compute.amazonaws.com/ContactManager';
 var extension = "php";
 
 var userId = 0;
@@ -10,17 +10,96 @@ function goLogin()
 {
 	hideOrShow("loginDiv", true);
 	hideOrShow("welcomeDiv", false);
+	hideOrShow("createDiv", false);
 }
 
 function goCreateAccount()
 {
+	hideOrShow("loginDiv", false);
+	hideOrShow("welcomeDiv", false);
+	hideOrShow("createDiv", true);
+}
 
+function doCreateAccount()
+{
+	userId = 0;
+	document.getElementById("loginResult").innerHTML = "";
+
+	var login = document.getElementById("cloginName").value;
+	var password = document.getElementById("cloginPassword").value;
+	var phone = document.getElementById("phone").value;
+	var first_Name = document.getElementById("firstName").value;
+	var last_Name = document.getElementById("lastName").value;
+	var address = document.getElementById("address").value;
+
+	//var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	var jsonPayload = '{"first_Name" : "' + first_Name + '", "last_Name" : "' + last_Name + '", "phone" : "' + phone + '", "email" : "' + login + '", "password" : "' + password + '", "address" : "' + address + '"}';
+	var url = urlBase + '/LAMPAPI/create_account.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.send(jsonPayload);
+
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				alert(xhr.responseText);
+
+				var jsonObject = JSON.parse( xhr.responseText );
+				
+				userId = jsonObject.id;
+				alert(userId);
+				
+				if( userId < 1 )
+				{
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					return;
+				}
+				
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+				
+				document.getElementById("userName").innerHTML = firstName + " " + lastName;
+				
+				document.getElementById("cloginName").value = "";
+				document.getElementById("cloginPassword").value = "";
+				document.getElementById("phone").value = "";
+				document.getElementById("firstName").value = "";
+				document.getElementById("lastName").value = "";
+				document.getElementById("address").value = "";
+				
+				hideOrShow( "loginDiv", false);
+				hideOrShow("welcomeDiv", false);
+				hideOrShow("createDiv", false);
+				hideOrShow( "loggedInDiv", true);
+				hideOrShow( "accessUIDiv", true);
+				
+			}
+		}
+	}
+	catch(err)
+	{
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
 }
 
 function goBackHome()
 {
+	document.getElementById("loginName").value = "";
+	document.getElementById("loginPassword").value = "";
+	document.getElementById("cloginName").value = "";
+	document.getElementById("cloginPassword").value = "";
+	document.getElementById("phone").value = "";
+	document.getElementById("firstName").value = "";
+	document.getElementById("lastName").value = "";
+	document.getElementById("address").value = "";
 	hideOrShow("loginDiv", false);
 	hideOrShow("welcomeDiv", true);
+	hideOrShow("createDiv", false);
 }
 
 function doLogin()
@@ -34,16 +113,19 @@ function doLogin()
 	
 	document.getElementById("loginResult").innerHTML = "";
 	
-	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
-	var url = urlBase + '/login.' + extension;
+// 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	var jsonPayload = '{"email" : "' + login + '", "pass" : "' + password + '"}';
+	var url = urlBase + '/LAMPAPI/login.' + extension;
 // 	var url = urlBase + '/contacts.html';
 	
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, false);
+	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
 		xhr.send(jsonPayload);
+		
+// 		xhr.onreadystatechange = function();
 		
 		var jsonObject = JSON.parse( xhr.responseText );
 		
@@ -82,7 +164,9 @@ function doLogout()
 
 	hideOrShow( "loggedInDiv", false);
 	hideOrShow( "accessUIDiv", false);
-	hideOrShow( "loginDiv", true);
+	hideOrShow("createDiv", false);
+	hideOrShow( "loginDiv", false);
+	hideOrShow("welcomeDiv", true);
 }
 
 function hideOrShow( elementId, showState )

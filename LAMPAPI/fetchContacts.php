@@ -13,7 +13,7 @@ if ($conn->connect_error)
 		$id = $inData["id"];
 		$sql = "SELECT * FROM contact_list where email='" . $id  . "'";
 		//$result = $conn->query($sql);
-		$result = mysqli_query($conn, $sql)
+		$result = mysqli_query($conn, $sql);
     		$json_array = array();
 
     while($row = mysqli_fetch_assoc($result))

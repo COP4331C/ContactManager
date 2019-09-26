@@ -89,6 +89,14 @@ function doCreateAccount()
 
 function goBackHome()
 {
+	document.getElementById("loginName").value = "";
+	document.getElementById("loginPassword").value = "";
+	document.getElementById("cloginName").value = "";
+	document.getElementById("cloginPassword").value = "";
+	document.getElementById("phone").value = "";
+	document.getElementById("firstName").value = "";
+	document.getElementById("lastName").value = "";
+	document.getElementById("address").value = "";
 	hideOrShow("loginDiv", false);
 	hideOrShow("welcomeDiv", true);
 	hideOrShow("createDiv", false);

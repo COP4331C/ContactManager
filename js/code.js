@@ -81,7 +81,7 @@ function goBackHome()
 {
 	hideOrShow("loginDiv", false);
 	hideOrShow("welcomeDiv", true);
-	hideOrShow("createDiv", true);
+	hideOrShow("createDiv", false);
 }
 
 function doLogin()

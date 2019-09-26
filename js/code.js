@@ -10,6 +10,7 @@ function goLogin()
 {
 	hideOrShow("loginDiv", true);
 	hideOrShow("welcomeDiv", false);
+	hideOrShow("createDiv", false);
 }
 
 function goCreateAccount()

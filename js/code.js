@@ -29,12 +29,12 @@ function doCreateAccount()
 	var login = document.getElementById("cloginName").value;
 	var password = document.getElementById("cloginPassword").value;
 	var phone = document.getElementById("phone").value;
-	var first_Name = document.getElementById("firstName").value;
-	var last_Name = document.getElementById("lastName").value;
+	var first_name = document.getElementById("firstName").value;
+	var last_name = document.getElementById("lastName").value;
 	var address = document.getElementById("address").value;
 
 // 	var jsonPayload = '{"first_Name" : "' + first_Name + '", "last_Name" : "' + last_Name + '", "phone" : "' + phone + '", "email" : "' + login + '", "password" : "' + password + '", "address" : "' + address + '"}';
-	var jsonPayload = JSON.stringify({first_Name:first_name, last_name:last_name, phone:phone, email:login, password:password, address:address});
+	var jsonPayload = JSON.stringify({first_name:first_name, last_name:last_name, phone:phone, email:clogin, password:password, address:address});
 	var url = urlBase + '/LAMPAPI/create_account.' + extension;
 
 	var xhr = new XMLHttpRequest();

@@ -27,6 +27,10 @@ function doCreateAccount()
 
 	var login = document.getElementById("loginName").value;
 	var password = document.getElementById("loginPassword").value;
+	var phone = document.getElementById("phone").value;
+	var first_Name = document.getElementById("firstName").value;
+	var last_Name = document.getElementById("lastName").value;
+	var address = document.getElementById("address").value;
 
 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
 	var url = urlBase + '/LAMPAPI/create_account.' + extension;
@@ -63,10 +67,10 @@ function doCreateAccount()
 				document.getElementById("loginName").value = "";
 				document.getElementById("loginPassword").value = "";
 				
-				hideOrShow( "loggedInDiv", true);
-				hideOrShow( "accessUIDiv", true);
 				hideOrShow( "loginDiv", false);
 				hideOrShow("welcomeDiv", false);
+				hideOrShow( "loggedInDiv", true);
+				hideOrShow( "accessUIDiv", true);
 				
 			}
 		}
@@ -145,6 +149,7 @@ function doLogout()
 
 	hideOrShow( "loggedInDiv", false);
 	hideOrShow( "accessUIDiv", false);
+	hideOrShow("createDiv", false);
 	hideOrShow( "loginDiv", true);
 }
 

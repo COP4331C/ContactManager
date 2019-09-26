@@ -2,11 +2,11 @@
 <head>
 	<title>--- PLACEHOLDER SITE ---</title>
 	<script type="text/javascript" src="js/code.js"></script>
-	
+
 	<link rel="icon" href="favicon.png" sizes="16x16" type="image/png">
-	
+
         <link href="css/styles.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">	
+	<link href="css/styles.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 <body>
@@ -21,16 +21,18 @@
 
 <div id="loginDiv" style="display:none; visibilty:hidden;">
 	<span id="inner-title">log in wont work lol</span>
-	<input type="text" id="loginName" placeholder="email" /><br />
-	<input type="password" id="loginPassword" placeholder="Password"/><br />
+	<input type="text" id="email" placeholder="Email" /><br />
+	<input type="password" id="pass" placeholder="Password"/><br />
 	<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
 	<button type="button" id="goBackHomeButton" class="buttons" onclick="goBackHome();"> Go back </button>
+
 	<form action="http://ec2-18-191-105-89.us-east-2.compute.amazonaws.com/ContactManager/contacts.html">
-	    <input type="submit" value="Access Contact Test" />
+	    <input type="submit" value="Access Contact Test Page" />
 	</form>
+	
 	<span id="loginResult"></span>
 </div>
-	
+
 <div id="createDiv" style="display:none; visibilty:hidden;">
 	<span id="inner-title">Create your account</span>
 	<input type="text" id="firstName" placeholder="First Name" /><br />

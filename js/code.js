@@ -9,16 +9,6 @@ var lastName = "";
 
 function goLogin()
 {
-	// Nullify some variables for error detection
-	userId = 0;
-
-	// Grab the user's email + pass from the html (variable names pending)
-	var email = document.getElementById("uName").value;
-	var pass = document.getElementById("pass").value;
-
-	// Glue together some json
-	var jsonPayload = JSON.stringify({login:uName, password})
-
 	hideOrShow("loginDiv", true);
 	hideOrShow("welcomeDiv", false);
 	hideOrShow("createDiv", false);
@@ -116,49 +106,51 @@ function goBackHome()
 function doLogin()
 {
 	userId = 0;
-	firstName = "";
-	lastName = "";
-
-	var login = document.getElementById("loginName").value;
-	var password = document.getElementById("loginPassword").value;
-
 	document.getElementById("loginResult").innerHTML = "";
 
-// 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
-	var jsonPayload = '{"email" : "' + login + '", "pass" : "' + password + '"}';
-	var url = urlBase + '/LAMPAPI/login.' + extension;
-// 	var url = urlBase + '/contacts.html';
+	// Grab the user's email + pass from the html (variable names pending)
+	var email = document.getElementById("email").value;
+	var pass = document.getElementById("pass").value;
 
+	// Glue together some json
+	var jsonPayload = JSON.stringify({email:email, password:pass});
+	var url = urlBase + '/LAMPAPI/login.' + extension;
+
+	// Prepare to send
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+// 	var url = urlBase + '/contacts.html';
 	try
 	{
+		// Send the payload
 		xhr.send(jsonPayload);
 
-// 		xhr.onreadystatechange = function();
-
-		var jsonObject = JSON.parse( xhr.responseText );
-
-		userId = jsonObject.id;
-
-		if( userId < 1 )
+		xhr.onreadystatechange = function()
 		{
-			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-			return;
+			if (this.readyState == 4 && this.status == 200)
+			{
+				// Parse the response from the server
+				var jsonObject = JSON.parse(xhr.responseText);
+
+				// Get UID from json. If json does not have an updated UID, print error.
+				userId = jsonObject.id;
+				if (userId < 1)
+				{
+					document.getElementById("loginResult").innerHTML = jsonObject.error;
+					return;
+				}
+
+				// Otherwise, we successfuly got a user from the database.
+				// Reset the username and password just for cleanliness
+				document.getElementById("email").value = "";
+				document.getElementById("password").value = "";
+
+				// Go to contacts.html
+				window.location.replace(urlBase + "/contacts.html");
+			}
 		}
-
-		firstName = jsonObject.firstName;
-		lastName = jsonObject.lastName;
-
-		document.getElementById("userName").innerHTML = firstName + " " + lastName;
-
-		document.getElementById("loginName").value = "";
-		document.getElementById("loginPassword").value = "";
-
-		hideOrShow( "loggedInDiv", true);
-		hideOrShow( "accessUIDiv", true);
-		hideOrShow( "loginDiv", false);
 	}
 	catch(err)
 	{

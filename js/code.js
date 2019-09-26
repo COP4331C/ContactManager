@@ -33,9 +33,7 @@ function doCreateAccount()
 	var address = document.getElementById("address").value;
 
 	//var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
-	var jsonPayload = '{"first_Name" : "' + first_Name + '", "last_Name" : "' + last_Name + '",
-	 		"phone" : "' + phone + '", "email" : "' + login + '", "password" : "' + password + '",
-			"address" : "' + address + '"}';
+	var jsonPayload = '{"first_Name" : "' + first_Name + '", "last_Name" : "' + last_Name + '", "phone" : "' + phone + '", "email" : "' + login + '", "password" : "' + password + '", "address" : "' + address + '"}';
 	var url = urlBase + '/LAMPAPI/create_account.' + extension;
 
 	var xhr = new XMLHttpRequest();

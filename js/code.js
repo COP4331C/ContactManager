@@ -105,7 +105,8 @@ function doLogin()
 	
 	document.getElementById("loginResult").innerHTML = "";
 	
-	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+// 	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	var jsonPayload = '{"email" : "' + login + '", "pass" : "' + password + '"}';
 	var url = urlBase + '/LAMPAPI/login.' + extension;
 // 	var url = urlBase + '/contacts.html';
 	

@@ -143,7 +143,7 @@ function doLogin()
 				}
 
 				// Otherwise, we successfuly got a user from the database.
-
+				document.getElementById("loginResult").innerHTML = "Success";
 				// Reset the username and password just for cleanliness
 				document.getElementById("email").value = "";
 				document.getElementById("password").value = "";

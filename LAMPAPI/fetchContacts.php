@@ -16,7 +16,7 @@ else
 	$result = mysqli_query($conn, $sql);
     	$json_array = array();
 	
-	if(result->num_rows > 0 )
+	if($result->num_rows > 0 )
 	{
    		while($row = mysqli_fetch_assoc($result))
     		{

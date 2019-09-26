@@ -45,7 +45,7 @@ function doLogin()
 	{
 		xhr.send(jsonPayload);
 		
-		xhr.onreadystatechange = function()
+		xhr.onreadystatechange = function();
 		
 		var jsonObject = JSON.parse( xhr.responseText );
 		

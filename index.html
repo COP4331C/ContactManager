@@ -30,6 +30,15 @@
 	</form>
 	<span id="loginResult"></span>
 </div>
+	
+<div id="createDiv" style="display:none; visibilty:hidden;">
+	<span id="inner-title">Create your account</span>
+	<input type="text" id="loginName" placeholder="Username" /><br />
+	<input type="password" id="loginPassword" placeholder="Password"/><br />
+	<button type="button" id="createButton" class="buttons" onclick="doCreateAccount();"> Create </button>
+	<button type="button" id="goBackHomeButton" class="buttons" onclick="goBackHome();"> Go back </button>
+	<span id="loginResult"></span>
+</div>
 
 <div id="loggedInDiv" style="display:none; visibility:hidden;">
 	<span id="userName"></span><br />

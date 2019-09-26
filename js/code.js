@@ -14,6 +14,13 @@ function goLogin()
 
 function goCreateAccount()
 {
+	hideOrShow("loginDiv", false);
+	hideOrShow("welcomeDiv", false);
+	hideOrShow("createDiv", true);
+}
+
+function doCreateAccount()
+{
 	userId = 0;
 	document.getElementById("loginResult").innerHTML = "";
 

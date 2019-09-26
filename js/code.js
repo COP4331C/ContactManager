@@ -110,7 +110,7 @@ function doLogin()
 
 	// Grab the user's email + pass from the html (variable names pending)
 	var email = document.getElementById("email").value;
-	var pass = document.getElementById("pass").value;
+	var password = document.getElementById("pass").value;
 
 	// Glue together some json
 	var jsonPayload = JSON.stringify({email:email, password:pass});

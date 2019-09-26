@@ -74,6 +74,7 @@ function doCreateAccount()
 				
 				hideOrShow( "loginDiv", false);
 				hideOrShow("welcomeDiv", false);
+				hideOrShow("createDiv", false);
 				hideOrShow( "loggedInDiv", true);
 				hideOrShow( "accessUIDiv", true);
 				

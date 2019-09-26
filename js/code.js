@@ -14,7 +14,58 @@ function goLogin()
 
 function goCreateAccount()
 {
+	userId = 0;
+	document.getElementById("loginResult").innerHTML = "";
 
+	var login = document.getElementById("loginName").value;
+	var password = document.getElementById("loginPassword").value;
+
+	var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
+	var url = urlBase + '/LAMPAPI/create_account.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.send(jsonPayload);
+
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				alert(xhr.responseText);
+
+				var jsonObject = JSON.parse( xhr.responseText );
+				
+				userId = jsonObject.id;
+				alert(userId);
+				
+				if( userId < 1 )
+				{
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					return;
+				}
+				
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+				
+				document.getElementById("userName").innerHTML = firstName + " " + lastName;
+				
+				document.getElementById("loginName").value = "";
+				document.getElementById("loginPassword").value = "";
+				
+				hideOrShow( "loggedInDiv", true);
+				hideOrShow( "accessUIDiv", true);
+				hideOrShow( "loginDiv", false);
+				
+			}
+		}
+	}
+	catch(err)
+	{
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
 }
 
 function goBackHome()

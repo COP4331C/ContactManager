@@ -155,7 +155,8 @@ function doLogout()
 	hideOrShow( "loggedInDiv", false);
 	hideOrShow( "accessUIDiv", false);
 	hideOrShow("createDiv", false);
-	hideOrShow( "loginDiv", true);
+	hideOrShow( "loginDiv", false);
+	hideOrShow("welcomeDiv", true);
 }
 
 function hideOrShow( elementId, showState )

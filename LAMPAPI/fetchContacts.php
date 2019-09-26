@@ -5,39 +5,34 @@ $inData = getRequestInfo();
 $conn = new mysqli("localhost", "root", "cop4331", "database");
 
 if ($conn->connect_error)
-	{
+{
 		returnWithError( $conn->connect_error );
-	}
-	else
-	{
-		$id = $inData["id"];
-		$sql = "SELECT * FROM contact_list where id='" . $id  . "'";
+}
+else
+{
+	$id = $inData["id"];
+	$sql = "SELECT * FROM contact_list where id='" . $id  . "'";
 		//$result = $conn->query($sql);
-		$result = mysqli_query($conn, $sql);
-    		$json_array = array();
+	$result = mysqli_query($conn, $sql);
+    	$json_array = array();
+	
+	if(result->num_rows > 0 )
+	{
+   		while($row = mysqli_fetch_assoc($result))
+    		{
+      			$json_array[] = $row;
+    		}
 
-    while($row = mysqli_fetch_assoc($result))
-    {
-      $json_array[] = $row;
-    }
-
-    returnWithInfo(json_encode($json_array));
-
-		/*if ($result->num_rows > 0)
-		{
-			$row = $result->fetch_assoc();
-			$first_name = $row["first_name"];
-			$last_name = $row["last_name"];
-			$id = $row["id"];
-
-			returnWithInfo($first_name, $last_name, $id);
-		}
-		else
-		{
-			returnWithError('Error there were no contacts for the user id = ' . $id . ' found.');
-		}*/
+    		returnWithInfo(json_encode($json_array));
 		$conn->close();
 	}
+	
+	else
+	{
+		returnWithError('Error there were no contacts for the user id = ' . $id . ' found.');
+	}
+	
+}
 
 
   function getRequestInfo()

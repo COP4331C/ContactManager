@@ -12,11 +12,12 @@ function goLogin()
 	// Nullify some variables for error detection
 	userId = 0;
 
-	// Grab the user's email + pass from the html
+	// Grab the user's email + pass from the html (variable names pending)
 	var email = document.getElementById("uName").value;
 	var pass = document.getElementById("pass").value;
 
-	// 
+	// Glue together some json
+	var jsonPayload = JSON.stringify({login:uName, password})
 
 	hideOrShow("loginDiv", true);
 	hideOrShow("welcomeDiv", false);

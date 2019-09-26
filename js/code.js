@@ -65,6 +65,7 @@ function doCreateAccount()
 				hideOrShow( "loggedInDiv", true);
 				hideOrShow( "accessUIDiv", true);
 				hideOrShow( "loginDiv", false);
+				hideOrShow("welcomeDiv", false);
 				
 			}
 		}

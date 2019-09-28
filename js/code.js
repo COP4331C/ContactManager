@@ -200,13 +200,17 @@ function fetchContactList(userId)
         if(jsonObject.error.length > 0)
 			  {
 					// document.getElementById("contactSearchResult").innerHTML = "No contacts were found.";
+					console.log("No contacts found");
 					return;
 				}
+
+				console.log("Contacts found");
 
         var i;
 				// runs i times, where i = number of ids found
         for (i = 0; i < jsonObject.cid.length; i++)
 				{
+
 		    	var table = document.getElementById("contactTable");
 		      var tr = document.createElement("tr");
 		      s = jsonObject.userId[i];

@@ -103,6 +103,31 @@ function goBackHome()
 	hideOrShow("createDiv", false);
 }
 
+// Creates a cookie to store a user's session info
+function createCookie(name, value)
+{
+	document.cookie = name + "=" + value + ";path=/";
+}
+
+function getCookie(name)
+{
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0)
+		{
+			alert(name.length, c.length);
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 function doLogin()
 {
 	userId = 0;
@@ -144,6 +169,11 @@ function doLogin()
 
 				// Otherwise, we successfuly got a user from the database.
 				document.getElementById("loginResult").innerHTML = "Success";
+
+				// Create a sitewide cookie to store this info
+				createCookie("id", userId);
+
+				var tempstring = getCookie("id");
 
 				// Reset the username and password just for cleanliness
 				document.getElementById("email").value = "";

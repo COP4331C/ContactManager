@@ -151,8 +151,10 @@ function doLogin()
 
 				// Go to contacts.html
 				window.location.replace(urlBase + "/contacts.html");
+				console.log("Redirecting...");
 
 				fetchContactList(userId);
+				console.log("Fetched contacts");
 			}
 		}
 	}
@@ -179,6 +181,7 @@ function doLogout()
 // Refresh the table of contacts based on the userId given.
 function fetchContactList(userId)
 {
+	console.log("Fetching contacts...");
 	//   document.getElementById("contactRetrieveResult").innerHTML = "";
 	var jsonPayload = '{"id" : "' + userId + '"}';
   var url = urlBase + 'LAMPAPI/fetchContacts.' + extension;

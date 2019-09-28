@@ -180,8 +180,8 @@ function doLogout()
 function fetchContactList(userId)
 {
 	//   document.getElementById("contactRetrieveResult").innerHTML = "";
-	var jsonPayload = '{"userId" : "' + userId + '"}';
-  var url = urlBase + 'api/retrieveContacts.' + extension;
+	var jsonPayload = '{"id" : "' + userId + '"}';
+  var url = urlBase + 'LAMPAPI/fetchContacts.' + extension;
 	var xhr = new XMLHttpRequest();
 
 	xhr.open("GET", url, true);

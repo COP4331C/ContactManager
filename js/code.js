@@ -109,7 +109,7 @@ function createCookie(name, value)
 	document.cookie = name + "=" + value + ";path=/";
 }
 
-function getCookie(name)
+function getCookie(cname)
 {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);

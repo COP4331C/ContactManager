@@ -1,4 +1,8 @@
-function fillExisting() {
+jQuery(function($) {
+	$("#contactPhone").mask("999-999-9999");
+});
+
+function editClick() {
 	var table = document.getElementById("contactTable");
 	var contactPopup = document.getElementById("contactForm").children[0].children[0].children[1];
 	var selectedCount = 0;
@@ -10,24 +14,70 @@ function fillExisting() {
 			selectedRow = row;
 		}
 	}
-	
-	console.log(selectedCount);
 
-	if (selectedCount == 0) {
+	if (selectedCount == 1) {
+		clearPopup();
+		$("#contactForm").data("editing", true);
+		$("#contactForm").data("row", selectedRow);
+		$("#contactForm").modal('show');
 		
+		for (var i = 0; i < 5; i++)
+			contactPopup.children[i].children[1].value = selectedRow.cells[i+1].innerText;
 	}
-		
-	else if (selectedCount == 1) {
-		contactPopup.children[0].children[1].value = selectedRow.cells[1].innerHTML;
-		contactPopup.children[1].children[1].value = selectedRow.cells[2].innerHTML;
-		contactPopup.children[2].children[1].value = selectedRow.cells[3].innerHTML;
-		contactPopup.children[3].children[1].value = selectedRow.cells[4].innerHTML;
-		contactPopup.children[4].children[1].value = selectedRow.cells[5].innerHTML;
+}
+
+function checkAll() {
+	var table = document.getElementById("contactTable");
+	
+	for (var i = 1, row; row = table.rows[i]; i++)
+		row.cells[0].children[0].checked = table.rows[0].cells[0].children[0].checked;
+}
+
+function deleteClick() {
+	var rows = [];
+	var table = document.getElementById("contactTable");
+	var found = true;
+	var foundCount = 0;
+	var msg = "Are you sure you want to delete ";
+	
+	for (var i = 1, row; row = table.rows[i]; i++) {
+		if (row.cells[0].children[0].checked == true)
+			foundCount++;
 	}
 	
-	else {
+	console.log(foundCount);
+	if (foundCount == 1)
+		msg = msg.concat("this contact?");
+	else if (foundCount > 0)
+		msg = msg.concat("these ").concat(foundCount).concat(" contacts?");
 		
+	if (confirm(msg)) {
+		while (found) {
+			found = false;
+			
+			for (var i = 1, row; row = table.rows[i]; i++) {
+				if (row.cells[0].children[0].checked == true) {
+					found = true;
+					table.deleteRow(row.rowIndex);
+					break;
+				}
+			}
+		}
 	}
+}
+
+function clearPopup() {
+	var contactModal, contactPopup;
+	
+	contactModal = document.getElementById("contactForm");
+	if (contactModal) {
+		contactPopup = document.getElementById("contactForm").children[0].children[0].children[1];
+	
+		for (var i = 0; i < 5; i++)
+			contactPopup.children[i].children[1].value = "";
+	}
+	
+	$("#contactForm").data("editing", false);
 }
 
 function filterTable() {
@@ -44,5 +94,52 @@ function filterTable() {
 			else
 				row.style.display = "none";
 		}
+	}
+}
+
+function getNextCid() {
+	return "cid3";
+}
+
+function saveClick() {
+	var table = document.getElementById("contactTable");
+	var row = $("#contactForm").data("row");
+	var args, cid, blank;
+	var contactPopup = document.getElementById("contactForm").children[0].children[0].children[1];
+	var newRowString = "";
+	
+	blank = true;
+	for (var i = 0; i < 5; i++) {
+		if (contactPopup.children[i].children[1].value.length > 0) {
+			blank = false;
+			break;
+		}
+	}
+			
+	if (!blank) {
+		if ($("#contactForm").data("editing")) {
+			args = [row.id];
+			
+			for (var i = 0; i < 5; i++) {
+				row.cells[i+1].innerText = contactPopup.children[i].children[1].value;
+				args.push(contactPopup.children[i].children[1].value);
+			}
+		}
+		
+		else {
+			cid = getNextCid();
+			newRowString = newRowString.concat("<tr id=\"", cid, "\"><td align=\"center\"><input type=\"checkbox\" name=\"check\"/></td>");
+			args = [cid];
+			
+			for (var i = 0; i < 5; i++) {
+				newRowString = newRowString.concat("<td>", contactPopup.children[i].children[1].value, "</td>");
+				args.push(contactPopup.children[i].children[1].value);
+			}
+			
+			newRowString = newRowString.concat("</tr>");
+			$('#contactTable').find('tbody').append(newRowString);
+		}
+		
+		$("#contactForm").modal('hide');
 	}
 }

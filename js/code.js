@@ -121,7 +121,7 @@ function getCookie(cname)
     }
     if (c.indexOf(name) == 0)
 		{
-			alert(name.length, c.length);
+			alert(c.substring(name.length, c.length));
       return c.substring(name.length, c.length);
     }
   }

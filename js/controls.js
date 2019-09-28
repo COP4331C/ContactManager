@@ -1,7 +1,5 @@
 var userId = 0;
 
-window.onload = getCookie("user_id");
-
 jQuery(function($) {
 	$("#contactPhone").mask("999-999-9999");
 });
@@ -19,11 +17,16 @@ function getCookie(cname)
     }
     if (c.indexOf(name) == 0)
 		{
-			alert(c.substring(name.length, c.length));
       return c.substring(name.length, c.length);
     }
   }
   return "";
+}
+
+function cookieTest()
+{
+	var tempstring = getCookie("user_id");
+	alert(tempstring);
 }
 
 function editClick() {

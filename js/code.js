@@ -121,7 +121,6 @@ function getCookie(cname)
     }
     if (c.indexOf(name) == 0)
 		{
-			alert(c.substring(name.length, c.length));
       return c.substring(name.length, c.length);
     }
   }
@@ -173,7 +172,7 @@ function doLogin()
 				// Create a sitewide cookie to store this info
 				createCookie("id", userId);
 
-				var tempstring = getCookie("id");
+				var tempstring = getCookie("user_id");
 
 				// Reset the username and password just for cleanliness
 				document.getElementById("email").value = "";

@@ -26,7 +26,7 @@ function getCookie(cname)
 function cookieTest()
 {
 	var tempstring = getCookie("user_id");
-	alert(tempstring);
+	// alert(tempstring);
 }
 
 function editClick() {

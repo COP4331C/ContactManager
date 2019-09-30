@@ -44,7 +44,7 @@ function fetchContactList(userId)
   var url = urlBase + '/LAMPAPI/fetchContacts.' + extension;
 	var xhr = new XMLHttpRequest();
 
-	xhr.open("GET", url, true);
+	xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
   try

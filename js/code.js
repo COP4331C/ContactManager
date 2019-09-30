@@ -182,7 +182,7 @@ function doLogin()
 // 				window.location.replace(urlBase + "/contacts.html");
 // 				console.log("Redirecting...");
 
-				fetchContactList(userId);
+				// fetchContactList(userId);
 				console.log("Fetched contacts");
 			}
 		}

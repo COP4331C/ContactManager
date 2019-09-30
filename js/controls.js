@@ -32,7 +32,7 @@ function cookieTest()
 }
 
 // Refresh the table of contacts based on the userId given.
-function fetchContactList(1)
+function fetchContactList(user_id)
 // function fetchContactList()
 {
 	//cookieTest();

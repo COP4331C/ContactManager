@@ -92,6 +92,7 @@ function fetchContactList(user_id)
 						checkbox.name = "name";
 						checkbox.value = "value";
 						checkbox.id = "id";
+						checkbox.align = "center";
 
 						// String to store the text we're adding to this cell
 						var cellString;

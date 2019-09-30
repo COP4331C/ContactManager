@@ -1,3 +1,6 @@
+var urlBase = 'http://18.222.70.247';
+var extension = "php";
+
 jQuery(function($) {
 	$("#contactPhone").mask("999-999-9999");
 });

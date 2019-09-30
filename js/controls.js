@@ -98,16 +98,16 @@ function fetchContactList(userId)
 								cellString = jsonObject[i].first_name;
 								break;
 							case 2:
-								cellString = jsonObject.last_name[i];
+								cellString = jsonObject[i].last_name;
 								break;
 							case 3:
-								cellString = jsonObject.address[i];
+								cellString = jsonObject[i].address;
 								break;
 							case 4:
-								cellString = jsonObject.email[i];
+								cellString = jsonObject[i].email;
 								break;
 							case 5:
-								cellString = jsonObject.phone[i];
+								cellString = jsonObject[i].phone;
 								break;
 							default:
 								break;

@@ -32,14 +32,14 @@ function cookieTest()
 }
 
 // Refresh the table of contacts based on the userId given.
-function fetchContactList(userId)
+function fetchContactList(user_id)
 {
 	console.log("Fetching contacts...");
 	//   document.getElementById("contactRetrieveResult").innerHTML = "";
 	// var jsonPayload = '{"id" : "' + userId + '"}';
 
 	// TEMPORARY user id Test
-	var jsonPayload = JSON.stringify({id:"1", password:"fakepass"});
+	var jsonPayload = JSON.stringify({id:user_id});
 
   var url = urlBase + '/LAMPAPI/fetchContacts.' + extension;
 	var xhr = new XMLHttpRequest();

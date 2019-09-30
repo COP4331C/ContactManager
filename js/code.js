@@ -179,12 +179,10 @@ function doLogin()
 				document.getElementById("password").value = "";
 
 				// Go to contacts.html
-// 				window.location.replace(urlBase + "/contacts.html");
-// 				console.log("Redirecting...");
+				window.location.replace(urlBase + "/contacts.html");
+				console.log("Redirecting...");
 
-				// fetchContactList(userId);
-				console.log("Fetched contacts");
-			}
+
 		}
 	}
 	catch(err)

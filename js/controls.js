@@ -51,6 +51,7 @@ function fetchContactList(userId)
 
   try
   {
+		console.log(jsonPayload);
   	xhr.send(jsonPayload);
 
     xhr.onreadystatechange = function()
@@ -60,7 +61,7 @@ function fetchContactList(userId)
       	var jsonObject = JSON.parse(xhr.responseText);
 				console.log(jsonObject);
         //contactId = jsonObject.tableId;
-        if(jsonObject.cid[1] == null)
+        if(jsonObject.error.length > 0)
 			  {
 					// document.getElementById("contactSearchResult").innerHTML = "No contacts were found.";
 					console.log("No contacts found");

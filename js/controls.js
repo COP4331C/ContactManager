@@ -39,7 +39,7 @@ function fetchContactList(userId)
 	// var jsonPayload = '{"id" : "' + userId + '"}';
 
 	// TEMPORARY user id Test
-	var jsonPayload = JSON.stringify({id:1});
+	var jsonPayload = JSON.stringify({id:"1", password:"fakepass"});
 
 	console.log(jsonPayload);
 

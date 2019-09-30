@@ -1,8 +1,9 @@
 <?php
 
-$inData = getRequestInfo();
 
 $conn = new mysqli("localhost", "root", "cop4331", "database");
+
+$inData = getRequestInfo();
 
 if ($conn->connect_error)
 {

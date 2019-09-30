@@ -57,7 +57,7 @@ function fetchContactList(userId)
       {
       	var jsonObject = JSON.parse(xhr.responseText);
         //contactId = jsonObject.tableId;
-        if(jsonObject.error.length > 0)
+        if(jsonObject.cid[1] == null)
 			  {
 					// document.getElementById("contactSearchResult").innerHTML = "No contacts were found.";
 					console.log("No contacts found");
@@ -133,6 +133,10 @@ function fetchContactList(userId)
 }
 
 function editClick() {
+
+	// Temporary forced way to run fetchContactList()
+	fetchContactList(1);
+
 	var table = document.getElementById("contactTable");
 	var contactPopup = document.getElementById("contactForm").children[0].children[0].children[1];
 	var selectedCount = 0;

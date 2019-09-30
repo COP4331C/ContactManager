@@ -1,4 +1,6 @@
 var userId = 0;
+var urlBase = 'http://ec2-18-191-105-89.us-east-2.compute.amazonaws.com/ContactManager';
+var extension = "php";
 
 jQuery(function($) {
 	$("#contactPhone").mask("999-999-9999");
@@ -37,8 +39,8 @@ function fetchContactList(userId)
 	// var jsonPayload = '{"id" : "' + userId + '"}';
 
 	// TEMPORARY user id Test
-	var jsonPayload = JSON.stringify({id:"1"});
-	
+	var jsonPayload = JSON.stringify({id:userId});
+
   var url = urlBase + 'LAMPAPI/fetchContacts.' + extension;
 	var xhr = new XMLHttpRequest();
 

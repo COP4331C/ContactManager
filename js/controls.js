@@ -29,6 +29,103 @@ function cookieTest()
 	// alert(tempstring);
 }
 
+// Refresh the table of contacts based on the userId given.
+function fetchContactList(userId)
+{
+	console.log("Fetching contacts...");
+	//   document.getElementById("contactRetrieveResult").innerHTML = "";
+	var jsonPayload = '{"id" : "' + userId + '"}';
+  var url = urlBase + 'LAMPAPI/fetchContacts.' + extension;
+	var xhr = new XMLHttpRequest();
+
+	xhr.open("GET", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+  try
+  {
+  	xhr.send(jsonPayload);
+
+    xhr.onreadystatechange = function()
+    {
+    	if (this.readyState == 4 && this.status == 200)
+      {
+      	var jsonObject = JSON.parse(xhr.responseText);
+        //contactId = jsonObject.tableId;
+        if(jsonObject.error.length > 0)
+			  {
+					// document.getElementById("contactSearchResult").innerHTML = "No contacts were found.";
+					console.log("No contacts found");
+					return;
+				}
+
+				console.log("Contacts found");
+
+				// this should give the number of json entries we were returned?
+				var numContacts = jsonObject.cid.length;
+				// just the number of cells we need to put into the table per contact
+				var numCells = 6;
+
+				// Reference to Bryan's html table to work off of
+				var tableRef = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
+
+				for (i = 0; i < numContacts; i++)
+				{
+					// Reference to the current row
+					var newRow = tableRef.insertRow(tableRef.rows.length);
+
+					for (j = 0; j < numCells; j++)
+					{
+						// Reference to the current cell
+						var newCell = newRow.insertCell(j);
+						// String to store the text we're adding to this cell
+						var cellString;
+
+						// Detect which attribute we need to add
+						switch(j)
+						{
+							case 0:
+								// Insert a checkbox??
+								break;
+							case 1:
+								cellString = jsonObject.first_name[i];
+								break;
+							case 2:
+								cellString = jsonObject.last_name[i];
+								break;
+							case 3:
+								cellString = jsonObject.address[i];
+								break;
+							case 4:
+								cellString = jsonObject.email[i];
+								break;
+							case 5:
+								cellString = jsonObject.phone[i];
+								break;
+							default:
+								break;
+						}
+
+						// Not sure if we'll get nulls but just in case
+						if (cellString == null)
+							cellString = "";
+
+						// Make a new text node out of cellString
+						var newText = document.createTextNode(cellString);
+
+						// Add newText to the current cell
+						newCell.appendChild(newText);
+
+					}
+				}
+      }
+    };
+   }
+   catch(err)
+   {
+      document.getElementById("contactSearchResult").innerHTML = err.message;
+   }
+}
+
 function editClick() {
 	var table = document.getElementById("contactTable");
 	var contactPopup = document.getElementById("contactForm").children[0].children[0].children[1];

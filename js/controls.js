@@ -41,8 +41,6 @@ function fetchContactList(userId)
 	// TEMPORARY user id Test
 	var jsonPayload = JSON.stringify({id:"1", password:"fakepass"});
 
-	console.log(jsonPayload);
-
   var url = urlBase + '/LAMPAPI/fetchContacts.' + extension;
 	var xhr = new XMLHttpRequest();
 
@@ -51,7 +49,7 @@ function fetchContactList(userId)
 
   try
   {
-		console.log(jsonPayload);
+		console.log("Payload at time of sending:" + jsonPayload);
   	xhr.send(jsonPayload);
 
     xhr.onreadystatechange = function()

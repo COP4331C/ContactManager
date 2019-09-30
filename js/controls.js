@@ -59,7 +59,7 @@ function fetchContactList(userId)
       	var jsonObject = JSON.parse(xhr.responseText);
 				console.log(jsonObject);
         //contactId = jsonObject.tableId;
-        if(jsonObject.error.length > 0)
+        if(jsonObject.has("error") && jsonObject.error.length > 0)
 			  {
 					// document.getElementById("contactSearchResult").innerHTML = "No contacts were found.";
 					console.log("No contacts found");

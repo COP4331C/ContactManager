@@ -1,5 +1,5 @@
 var userId = 0;
-var urlBase = 'http://ec2-18-191-105-89.us-east-2.compute.amazonaws.com/ContactManager';
+var urlBase = 'http://18.222.70.247';
 var extension = "php";
 
 jQuery(function($) {

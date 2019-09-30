@@ -1,4 +1,4 @@
-// var userId = 0;
+var userId = 0;
 var urlBase = 'http://18.222.70.247';
 var extension = "php";
 
@@ -32,8 +32,8 @@ function cookieTest()
 }
 
 // Refresh the table of contacts based on the userId given.
-// function fetchContactList(user_id)
-function fetchContactList()
+function fetchContactList(1)
+// function fetchContactList()
 {
 	//cookieTest();
 
@@ -42,8 +42,8 @@ function fetchContactList()
 	// var jsonPayload = '{"id" : "' + userId + '"}';
 
 	// TEMPORARY user id Test
-// 	var jsonPayload = JSON.stringify({id:user_id});
-	var jsonPayload = JSON.stringify({id:id});
+	var jsonPayload = JSON.stringify({id:user_id});
+// 	var jsonPayload = JSON.stringify({id:id});
 
   var url = urlBase + '/LAMPAPI/fetchContacts.' + extension;
 	var xhr = new XMLHttpRequest();

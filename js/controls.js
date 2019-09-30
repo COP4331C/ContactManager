@@ -84,7 +84,7 @@ function fetchContactList(user_id)
 				{
 					// Reference to the current row
 					var newRow = tableRef.insertRow(tableRef.rows.length);
-					newRow.id = "1"
+					newRow.id = jsonObject[i].cid;
 
 					for (j = 0; j < numCells; j++)
 					{

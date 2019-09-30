@@ -34,7 +34,11 @@ function fetchContactList(userId)
 {
 	console.log("Fetching contacts...");
 	//   document.getElementById("contactRetrieveResult").innerHTML = "";
-	var jsonPayload = '{"id" : "' + userId + '"}';
+	// var jsonPayload = '{"id" : "' + userId + '"}';
+
+	// TEMPORARY user id Test
+	var jsonPayload = JSON.stringify({id:"1"});
+	
   var url = urlBase + 'LAMPAPI/fetchContacts.' + extension;
 	var xhr = new XMLHttpRequest();
 

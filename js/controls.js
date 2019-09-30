@@ -152,7 +152,7 @@ function fetchContactList(user_id)
 function editClick() {
 
 	// Temporary forced way to run fetchContactList()
-	fetchContactList(1);
+	// fetchContactList(1);
 
 	var table = document.getElementById("contactTable");
 	var contactPopup = document.getElementById("contactForm").children[0].children[0].children[1];

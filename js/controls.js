@@ -41,7 +41,7 @@ function fetchContactList(userId)
 	// TEMPORARY user id Test
 	var jsonPayload = JSON.stringify({id:userId});
 
-  var url = urlBase + 'LAMPAPI/fetchContacts.' + extension;
+  var url = urlBase + '/LAMPAPI/fetchContacts.' + extension;
 	var xhr = new XMLHttpRequest();
 
 	xhr.open("GET", url, true);

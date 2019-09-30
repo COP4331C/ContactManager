@@ -92,7 +92,8 @@ function fetchContactList(userId)
 						switch(j)
 						{
 							case 0:
-								// Insert a checkbox??
+								// Temporarily blank until I copy how to enter a checkbox
+								cellString = "";
 								break;
 							case 1:
 								cellString = jsonObject[i].first_name;

@@ -69,7 +69,7 @@ function fetchContactList(userId)
 				console.log("Contacts found");
 
 				// this should give the number of json entries we were returned?
-				var numContacts = jsonObject.cid.length;
+				var numContacts = jsonObject.length;
 				// just the number of cells we need to put into the table per contact
 				var numCells = 6;
 

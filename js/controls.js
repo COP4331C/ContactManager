@@ -28,12 +28,14 @@ function getCookie(cname)
 function cookieTest()
 {
 	var tempstring = getCookie("user_id");
-	// alert(tempstring);
+	alert(tempstring);
 }
 
 // Refresh the table of contacts based on the userId given.
 function fetchContactList(user_id)
 {
+	cookieTest();
+
 	console.log("Fetching contacts...");
 	//   document.getElementById("contactRetrieveResult").innerHTML = "";
 	// var jsonPayload = '{"id" : "' + userId + '"}';

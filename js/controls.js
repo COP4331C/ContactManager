@@ -95,7 +95,7 @@ function fetchContactList(userId)
 								// Insert a checkbox??
 								break;
 							case 1:
-								cellString = jsonObject.first_name[i];
+								cellString = jsonObject[i].first_name;
 								break;
 							case 2:
 								cellString = jsonObject.last_name[i];

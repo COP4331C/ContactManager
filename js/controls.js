@@ -56,6 +56,7 @@ function fetchContactList(userId)
     	if (this.readyState == 4 && this.status == 200)
       {
       	var jsonObject = JSON.parse(xhr.responseText);
+				console.log(jsonObject);
         //contactId = jsonObject.tableId;
         if(jsonObject.cid[1] == null)
 			  {

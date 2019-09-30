@@ -85,16 +85,24 @@ function fetchContactList(user_id)
 					{
 						// Reference to the current cell
 						var newCell = newRow.insertCell(j);
+
+						// Create the checkbox that will be added in the first cell of each row
+						var checkbox = document.createElement('input');
+						checkbox.type = "checkbox";
+						checkbox.name = "name";
+						checkbox.value = "value";
+						checkbox.id = "id";
+
 						// String to store the text we're adding to this cell
 						var cellString;
 
 						// Detect which attribute we need to add
 						switch(j)
 						{
+							// If this is cell 0, append a checkbox and skip to next iteration
 							case 0:
-								// Temporarily blank until I copy how to enter a checkbox
-								cellString = "";
-								break;
+								newCell.appendChild(checkbox);
+								continue;
 							case 1:
 								cellString = jsonObject[i].first_name;
 								break;

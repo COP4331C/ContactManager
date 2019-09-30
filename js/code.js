@@ -170,7 +170,7 @@ function doLogin()
 				document.getElementById("loginResult").innerHTML = "Success";
 
 				// Create a sitewide cookie to store this info
-				createCookie("id", userId);
+				createCookie("id", userId.toString());
 
 				var tempstring = getCookie("user_id");
 

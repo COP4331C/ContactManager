@@ -38,11 +38,10 @@ function newCookieTest()
 
 }
 
-// Refresh the table of contacts based on the userId given.
-function fetchContactList(user_id)
-// function fetchContactList()
+// Refresh the table of contacts based on the user id saved in the user's cookie
+function fetchContactList()
 {
-	//cookieTest();
+	var user_id = getCookie("id");
 
 	console.log("Fetching contacts...");
 
@@ -144,8 +143,8 @@ function fetchContactList(user_id)
 
 					}
 				}
-				newCookieTest();
-				cookieTest();
+				// newCookieTest();
+				// cookieTest();
       }
     }
    }
@@ -234,7 +233,7 @@ function deleteClick() {
 	for (var i = 1, row; row = table.rows[i]; i++) {
 		if (row.cells[0].children[0].checked == true)
 		{
-			deleteContact(row.id, "1")
+			deleteContact(row.id, getCookie("id"))
 			foundCount++;
 		}
 

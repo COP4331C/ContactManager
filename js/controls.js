@@ -24,23 +24,8 @@ function getCookie(cname)
   return "";
 }
 
-function cookieTest()
-{
-	var tempstring = getCookie("id");
-	alert(tempstring);
-}
-
-function newCookieTest()
-{
-	var cookie = document.cookie;
-	console.log(cookie);
-
-
-}
-
 // Refresh the table of contacts based on the user id saved in the user's cookie
-function fetchContactList()
-{
+function fetchContactList() {
 	var user_id = getCookie("id");
 
 	console.log("Fetching contacts...");
@@ -56,7 +41,7 @@ function fetchContactList()
 
   try
   {
-		console.log("Payload at time of sending:" + jsonPayload);
+		// console.log("Payload at time of sending:" + jsonPayload);
   	xhr.send(jsonPayload);
 
     xhr.onreadystatechange = function()
@@ -138,8 +123,85 @@ function checkAll() {
 		row.cells[0].children[0].checked = table.rows[0].cells[0].children[0].checked;
 }
 
-function deleteContact(contact_id, user_id)
-{
+// Creates a contact and returns its cid to be used as a reference
+function createContact(args, user_id) {
+	var jsonPayload = JSON.stringify({id:user_id, first_name:args[1], last_name:args[2], address:args[3], email:args[4], phone:args[5]});
+	var url = urlBase + '/LAMPAPI/add_contact.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.send(jsonPayload);
+		console.log(jsonPlayload);
+
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				var jsonObject = JSON.parse(xhr.responseText);
+
+				if(jsonObject.hasOwnProperty('error') && jsonObject.error.length > 0)
+				{
+					console.log("Unexpected error");
+					console.log(jsonObject.error);
+					return -1;
+				}
+
+				console.log("Contact created successfully");
+				console.log("cid i guess = " + jsonObject.cid);
+				document.location.reload(true);
+				return jsonObject.cid;
+			}
+		}
+	}
+	catch (err)
+	{
+
+	}
+}
+
+// Updates a contact using its cid (provided in the args array)
+function updateContact(args) {
+	var jsonPayload = JSON.stringify({cid:args[0], first_name:args[1], last_name:args[2], address:args[3], email:args[4], phone:args[5]});
+	var url = urlBase + '/LAMPAPI/update.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.send(jsonPayload);
+		// console.log(jsonPlayload);
+
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				var jsonObject = JSON.parse(xhr.responseText);
+
+				if(jsonObject.hasOwnProperty('error') && jsonObject.error.length > 0)
+				{
+					console.log("Unexpected error");
+					console.log(jsonObject.error);
+					return;
+				}
+
+				else console.log("Contact updated successfully");
+			}
+		}
+	}
+	catch (err)
+	{
+
+	}
+
+}
+
+function deleteContact(contact_id, user_id) {
 	var jsonPayload = JSON.stringify({cid:contact_id, id:user_id});
 	var url = urlBase + '/LAMPAPI/delete_contact.' + extension;
 
@@ -171,7 +233,7 @@ function deleteContact(contact_id, user_id)
 	}
 	catch (err)
 	{
-
+		console.log(err);
 	}
 
 }
@@ -246,88 +308,8 @@ function filterTable() {
 	}
 }
 
-function updateContact(args)
-{
-	var jsonPayload = JSON.stringify({cid:args[0], first_name:args[1], last_name:args[2], address:args[3], email:args[4], phone:args[5]});
-	var url = urlBase + '/LAMPAPI/update.' + extension;
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-	try
-	{
-		xhr.send(jsonPayload);
-		console.log(jsonPlayload);
-
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				var jsonObject = JSON.parse(xhr.responseText);
-
-				if(jsonObject.hasOwnProperty('error') && jsonObject.error.length > 0)
-				{
-					console.log("Unexpected error");
-					console.log(jsonObject.error);
-					return;
-				}
-
-				else console.log("Contact updated successfully");
-			}
-		}
-	}
-	catch (err)
-	{
-
-	}
-
-}
-
-function createContact(args, user_id)
-{
-	var jsonPayload = JSON.stringify({id:user_id, first_name:args[1], last_name:args[2], address:args[3], email:args[4], phone:args[5]});
-	var url = urlBase + '/LAMPAPI/add_contact.' + extension;
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-	try
-	{
-		xhr.send(jsonPayload);
-		console.log(jsonPlayload);
-
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				var jsonObject = JSON.parse(xhr.responseText);
-
-				if(jsonObject.hasOwnProperty('error') && jsonObject.error.length > 0)
-				{
-					console.log("Unexpected error");
-					console.log(jsonObject.error);
-					return -1;
-				}
-
-				console.log("Contact created successfully");
-				console.log("cid i guess = " + jsonObject.cid);
-				document.location.reload(true);
-				return jsonObject.cid;
-			}
-		}
-	}
-	catch (err)
-	{
-
-	}
-}
-
-// Essentially the same logic used in fetchcontacts, but applied to a single row
-// Could potentially be reused there for neatness, consider this later...
-function appendRow(args, newRow)
-{
+// Appends each of the 6 required cells in a row.
+function appendRow(args, newRow) {
 	// Reference to the current row
 	newRow.id = args[0]
 
@@ -443,6 +425,7 @@ function saveClick() {
 			// If our cid was valid, go ahead and add this new row to the frontend
 			if (args[0] > 0)
 			{
+				// Create a tableRef here (required to allow modularization of fetchContacts)
 				var tableRef = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
 				var newRow = tableRef.insertRow(tableRef.rows.length);
 				appendRow(args, newRow);

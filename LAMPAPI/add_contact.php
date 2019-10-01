@@ -29,7 +29,7 @@ $conn = new mysqli($servername, $uname, $pword, $dbname);
       echo "New record created successfully";
       $row = $result->fetch_assoc();
       $cid = $row["cid"];
-      echo $cid ;
+      //echo $cid ;
       $id = $inData["id"];
       $firstName = $inData["first_name"];
       $lastName = $inData["last_name"];
@@ -65,7 +65,7 @@ function returnWithError( $err )
   $retValue = '{"id":"0","firstName":"","lastName":"","phone":"","email":"","address":"","error":"' . $err . '"}';
   sendResultInfoAsJson( $retValue );
 }
-function returnWithInfo( $id, $firstName, $lastName, $phone, $email, $address)
+function returnWithInfo( $id, $cid, $firstName, $lastName, $phone, $email, $address)
 {
   $retValue = '{"id":"'. $id . '","cid":"'. $cid . '","first_name":"' . $firstName . '","last_name":"' . $lastName . '","phone":"'. $phone . '","email":"' . $email . '","address":"' . $address . '","error":""}';
   sendResultInfoAsJson( $retValue );

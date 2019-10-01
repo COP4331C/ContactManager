@@ -68,12 +68,7 @@ function doCreateAccount()
 					return;
 				}
 
-				else
-				{
-					document.getElementById("loginError").innerHTML = "Created successfuly. Redirecting...";
-
-					// doLogin();
-				}
+				document.getElementById("loginError").innerHTML = "Created successfuly. Redirecting...";
 
 			}
 		}

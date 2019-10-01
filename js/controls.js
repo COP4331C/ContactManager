@@ -111,6 +111,7 @@ function fetchContactList()
 							// If this is cell 0, append a checkbox and skip to next iteration
 							case 0:
 								newCell.appendChild(checkbox);
+								newCell.align = "center";
 								continue;
 							case 1:
 								cellString = jsonObject[i].first_name;

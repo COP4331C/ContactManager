@@ -7,15 +7,18 @@ var userId = 0;
 
 $(function() {
 
-    $('#loginSubmit').click(function(e) {
+    $('#loginSubmit').click(function(e){
 		$('#registerSubmit').removeClass('active');
 		$(this).addClass('active');
+		doLogin();
 		e.preventDefault();
 	});
-	$('#registerSubmit').click(function(e) {
+	$('#registerSubmit').click(function(e)
+	{
 		console.log("submit clicked");
 		$('#loginSubmit').removeClass('active');
 		$(this).addClass('active');
+		doCreateAccount();
 		e.preventDefault();
 	});
 

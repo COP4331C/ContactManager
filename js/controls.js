@@ -431,9 +431,9 @@ function saveClick() {
 				var newRow = tableRef.insertRow(tableRef.rows.length);
 				appendRow(args, newRow);
 			// }
-
-			else
-				console.log("guess newContact() failed damn thats crazy...good luck with that");
+			// 
+			// else
+			// 	console.log("guess newContact() failed damn thats crazy...good luck with that");
 		}
 
 		$("#contactForm").modal('hide');

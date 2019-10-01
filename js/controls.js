@@ -179,6 +179,11 @@ function checkAll() {
 		row.cells[0].children[0].checked = table.rows[0].cells[0].children[0].checked;
 }
 
+function deleteContact(cid)
+{
+
+}
+
 function deleteClick() {
 	var rows = [];
 	var table = document.getElementById("contactTable");
@@ -188,7 +193,10 @@ function deleteClick() {
 
 	for (var i = 1, row; row = table.rows[i]; i++) {
 		if (row.cells[0].children[0].checked == true)
+		{
 			foundCount++;
+		}
+
 	}
 
 	console.log(foundCount);
@@ -245,6 +253,16 @@ function filterTable() {
 	}
 }
 
+function updateContact(cid, args)
+{
+
+}
+
+function createContact(args)
+{
+
+}
+
 function saveClick() {
 	var table = document.getElementById("contactTable");
 	var row = $("#contactForm").data("row");
@@ -260,19 +278,25 @@ function saveClick() {
 		}
 	}
 
+	// If the fields are blank, we should really just skip...
 	if (!blank) {
+		// If we're editing an existing contact...
 		if ($("#contactForm").data("editing")) {
 			args = [row.id];
+
+			console.log(args);
 
 			for (var i = 0; i < 5; i++) {
 				row.cells[i+1].innerText = contactPopup.children[i].children[1].value;
 				args.push(contactPopup.children[i].children[1].value);
 			}
 
-			updateContact(args);
 		}
 
+		// Otherwise, we must be creating a new contact
 		else {
+			// newContact(args);
+
 			cid = getNextCid();
 			newRowString = newRowString.concat("<tr id=\"", cid, "\"><td align=\"center\"><input type=\"checkbox\" name=\"check\"/></td>");
 			args = [cid];
@@ -285,7 +309,6 @@ function saveClick() {
 			newRowString = newRowString.concat("</tr>");
 			$('#contactTable').find('tbody').append(newRowString);
 
-			newContact(args);
 		}
 
 		$("#contactForm").modal('hide');

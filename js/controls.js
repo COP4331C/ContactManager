@@ -145,6 +145,7 @@ function createContact(args, user_id) {
 				{
 					console.log("Unexpected error");
 					console.log(jsonObject.error);
+					console.log("cid please " + jsonObject.cid);
 					return -1;
 				}
 
@@ -231,7 +232,7 @@ function deleteContact(contact_id, user_id) {
 	}
 	catch (err)
 	{
-		
+
 	}
 
 }

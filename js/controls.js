@@ -311,7 +311,7 @@ function saveClick() {
 			console.log(args);
 
 			// Make a new contact in the database, capture cid.
-			cid = newContact(args);
+			cid = createContact(args);
 
 			// If our cid was valid, go ahead and add this new row to the frontend
 			if (cid > 0)

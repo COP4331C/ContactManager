@@ -183,8 +183,41 @@ function checkAll() {
 		row.cells[0].children[0].checked = table.rows[0].cells[0].children[0].checked;
 }
 
-function deleteContact(cid)
+function deleteContact(contact_id, user_id)
 {
+	var jsonPayload = JSON.stringify({cid:contact_id, id:user_id});
+	var url = urlBase + '/LAMPAPI/delete_contact.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.send(jsonPayload);
+		console.log(jsonPlayload);
+
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				var jsonObject = JSON.parse(xhr.responseText);
+
+				if(jsonObject.hasOwnProperty('error') && jsonObject.error.length > 0)
+				{
+					console.log("Unexpected error");
+					console.log(jsonObject.error);
+					return;
+				}
+
+				console.log("Contact successfully deleted");
+			}
+		}
+	}
+	catch (err)
+	{
+
+	}
 
 }
 
@@ -198,6 +231,7 @@ function deleteClick() {
 	for (var i = 1, row; row = table.rows[i]; i++) {
 		if (row.cells[0].children[0].checked == true)
 		{
+			deleteContact(row.id, "1")
 			foundCount++;
 		}
 

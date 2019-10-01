@@ -443,6 +443,7 @@ function saveClick() {
 	var contactPopup = document.getElementById("contactForm").children[0].children[0].children[1];
 	var newRowString = "";
 
+	// Check if the user just left fields blank
 	blank = true;
 	for (var i = 0; i < 5; i++) {
 		if (contactPopup.children[i].children[1].value.length > 0) {
@@ -451,10 +452,12 @@ function saveClick() {
 		}
 	}
 
-	// If the fields are blank, we should really just skip...
-	if (!blank) {
+	// If the fields are blank, ignore the button press.
+	if (!blank)
+	{
 		// Are we editing an existing contact?
-		if ($("#contactForm").data("editing")) {
+		if ($("#contactForm").data("editing"))
+		{
 
 			// Grab the row id (which = the contact id)
 			args = [row.id];
@@ -470,15 +473,14 @@ function saveClick() {
 		}
 
 		// Otherwise, we must be creating a new contact
-		else {
+		else
+		{
 			// Initialize args with cid = 0
 			args = [0];
 
 			// Push each cell from the table into args
-			for (var i = 0; i < 5; i++) {
-				// newRowString = newRowString.concat("<td>", contactPopup.children[i].children[1].value, "</td>");
+			for (var i = 0; i < 5; i++)
 				args.push(contactPopup.children[i].children[1].value);
-			}
 
 			// Print args for my sake temporarily
 			console.log(args);
@@ -486,17 +488,12 @@ function saveClick() {
 			// Make a new contact in the database, capture cid.
 			args[0] = createContact(args, "1");
 
-
 			// If our cid was valid, go ahead and add this new row to the frontend
-			if (cid > 0)
-			{
+			if (args[0] > 0)
 				appendRow(args);
-			}
 
 			else
 				console.log("guess newContact() failed damn thats crazy...good luck with that");
-
-
 		}
 
 		$("#contactForm").modal('hide');

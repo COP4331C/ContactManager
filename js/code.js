@@ -4,19 +4,22 @@ var extension = "php";
 
 var userId = 0;
 
-function goLogin()
-{
-	hideOrShow("loginDiv", true);
-	hideOrShow("welcomeDiv", false);
-	hideOrShow("createDiv", false);
-}
 
-function goCreateAccount()
-{
-	hideOrShow("loginDiv", false);
-	hideOrShow("welcomeDiv", false);
-	hideOrShow("createDiv", true);
-}
+$(function() {
+
+    $('#loginSubmit').click(function(e) {
+		$('#registerSubmit').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+	$('#registerSubmit').click(function(e) {
+		console.log("submit clicked");
+		$('#loginSubmit').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+
+});
 
 function doCreateAccount()
 {

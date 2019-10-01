@@ -315,11 +315,8 @@ function createContact(args, user_id)
 					return -1;
 				}
 
-				else
-				{
-					console.log("Contact created successfully");
-					return jsonObject.cid;
-				}
+				console.log("Contact created successfully");
+				return jsonObject.cid;
 			}
 		}
 	}

@@ -145,7 +145,6 @@ function createContact(args, user_id) {
 				{
 					console.log("Unexpected error");
 					console.log(jsonObject.error);
-					return -1;
 				}
 
 				console.log("Contact created successfully");
@@ -419,6 +418,8 @@ function saveClick() {
 
 			// Make a new contact in the database, capture cid.
 			args[0] = createContact(args, "1");
+
+			console.log(args[0]);
 
 			// If our cid was valid, go ahead and add this new row to the frontend
 			if (args[0] > 0)

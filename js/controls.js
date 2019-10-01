@@ -197,15 +197,17 @@ function deleteClick() {
 	else if (foundCount > 0)
 		msg = msg.concat("these ").concat(foundCount).concat(" contacts?");
 
-	if (confirm(msg)) {
-		while (found) {
-			found = false;
+	if (foundCount > 0) {
+		if (confirm(msg)) {
+			while (found) {
+				found = false;
 
-			for (var i = 1, row; row = table.rows[i]; i++) {
-				if (row.cells[0].children[0].checked == true) {
-					found = true;
-					table.deleteRow(row.rowIndex);
-					break;
+				for (var i = 1, row; row = table.rows[i]; i++) {
+					if (row.cells[0].children[0].checked == true) {
+						found = true;
+						table.deleteRow(row.rowIndex);
+						break;
+					}
 				}
 			}
 		}

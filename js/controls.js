@@ -26,7 +26,7 @@ function getCookie(cname)
 
 function cookieTest()
 {
-	var tempstring = getCookie("user_id");
+	var tempstring = getCookie("id");
 	alert(tempstring);
 }
 
@@ -34,6 +34,8 @@ function newCookieTest()
 {
 	var cookie = document.cookie;
 	console.log(cookie);
+
+
 }
 
 // Refresh the table of contacts based on the userId given.
@@ -143,6 +145,7 @@ function fetchContactList(user_id)
 					}
 				}
 				newCookieTest();
+				cookieTest();
       }
     }
    }

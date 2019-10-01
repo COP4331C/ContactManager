@@ -41,7 +41,6 @@ function fetchContactList() {
 
   try
   {
-		// console.log("Payload at time of sending:" + jsonPayload);
   	xhr.send(jsonPayload);
 
     xhr.onreadystatechange = function()
@@ -49,8 +48,7 @@ function fetchContactList() {
     	if (this.readyState == 4 && this.status == 200)
       {
       	var jsonObject = JSON.parse(xhr.responseText);
-				console.log(jsonObject);
-        //contactId = jsonObject.tableId;
+
         if(jsonObject.hasOwnProperty('error') && jsonObject.error.length > 0)
 			  {
 					console.log("No contacts found");

@@ -159,8 +159,8 @@ function doLogin()
 				document.getElementById("loginPW").value = "";
 
 				// Go to contacts.html
-				window.location.replace(urlBase + "/contacts.html");
 				console.log("Redirecting...");
+				window.location.replace(urlBase + "/contacts.html");
 
 			}
 		}

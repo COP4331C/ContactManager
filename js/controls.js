@@ -423,15 +423,17 @@ function saveClick() {
 
 			console.log(args[0]);
 
+			// Removed cid check because it just kept not working!!!!!!!!
 			// If our cid was valid, go ahead and add this new row to the frontend
 			// if (args[0] > 0)
-			// {
-				// Create a tableRef here (required to allow modularization of fetchContacts)
-				var tableRef = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
-				var newRow = tableRef.insertRow(tableRef.rows.length);
-				appendRow(args, newRow);
-			// }
-			// 
+
+
+			// Create a tableRef here (required to allow modularization of fetchContacts)
+			var tableRef = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
+			var newRow = tableRef.insertRow(tableRef.rows.length);
+			appendRow(args, newRow);
+
+			//
 			// else
 			// 	console.log("guess newContact() failed damn thats crazy...good luck with that");
 		}

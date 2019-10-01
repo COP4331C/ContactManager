@@ -419,7 +419,7 @@ function saveClick() {
 			console.log(args);
 
 			// Make a new contact in the database, capture cid.
-			args[0] = createContact(args, "1");
+			args[0] = createContact(args, getCookie("id"));
 
 			console.log(args[0]);
 

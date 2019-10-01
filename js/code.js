@@ -68,7 +68,7 @@ function doCreateAccount()
 				{
 					document.getElementById("loginError").innerHTML = "Created successfuly. Redirecting...";
 
-					doLogin();
+					// doLogin();
 				}
 
 			}
@@ -128,6 +128,8 @@ function doLogin()
 		// Send the payload
 		xhr.send(jsonPayload);
 
+		console.log(jsonPayload);
+
 		xhr.onreadystatechange = function()
 		{
 			if (this.readyState == 4 && this.status == 200)
@@ -140,6 +142,7 @@ function doLogin()
 				if (userId < 1)
 				{
 					document.getElementById("loginError").innerHTML = jsonObject.error;
+					console.log("User doesn't exist");
 					return;
 				}
 

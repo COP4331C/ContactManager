@@ -85,67 +85,77 @@ function fetchContactList()
 
 				for (i = 0; i < numContacts; i++)
 				{
+					// Modularization attempt
+					var args;
+					args[0] = jsonObject[i].cid;
+					args[1] = jsonObject[i].first_name;
+					args[2] = jsonObject[i].last_name;
+					args[3] = jsonObject[i].address;
+					args[4] = jsonObject[i].email;
+					args[5] = jsonObject[i].phone;
+
 					// Reference to the current row
 					var newRow = tableRef.insertRow(tableRef.rows.length);
-					newRow.id = jsonObject[i].cid;
 
-					for (j = 0; j < numCells; j++)
-					{
-						// Reference to the current cell
-						var newCell = newRow.insertCell(j);
+					appendRow(args, newRow);
 
-						// Create the checkbox that will be added in the first cell of each row
-						var checkbox = document.createElement('input');
-						checkbox.type = "checkbox";
-						checkbox.name = "name";
-						checkbox.value = "value";
-						checkbox.id = "id";
-						checkbox.align = "center";
-
-						// String to store the text we're adding to this cell
-						var cellString;
-
-						// Detect which attribute we need to add
-						switch(j)
-						{
-							// If this is cell 0, append a checkbox and skip to next iteration
-							case 0:
-								newCell.appendChild(checkbox);
-								newCell.align = "center";
-								continue;
-							case 1:
-								cellString = jsonObject[i].first_name;
-								break;
-							case 2:
-								cellString = jsonObject[i].last_name;
-								break;
-							case 3:
-								cellString = jsonObject[i].address;
-								break;
-							case 4:
-								cellString = jsonObject[i].email;
-								break;
-							case 5:
-								cellString = jsonObject[i].phone;
-								break;
-							default:
-								break;
-						}
-
-						// Not sure if we'll get nulls but just in case
-						if (cellString == null)
-							cellString = "";
-
-						// Make a new text node out of cellString
-						var newText = document.createTextNode(cellString);
-
-						// Add newText to the current cell
-						newCell.appendChild(newText);
-
-					}
+				// 	newRow.id = jsonObject[i].cid;
+				//
+				// 	for (j = 0; j < numCells; j++)
+				// 	{
+				// 		// Reference to the current cell
+				// 		var newCell = newRow.insertCell(j);
+				//
+				// 		// Create the checkbox that will be added in the first cell of each row
+				// 		var checkbox = document.createElement('input');
+				// 		checkbox.type = "checkbox";
+				// 		checkbox.name = "name";
+				// 		checkbox.value = "value";
+				// 		checkbox.id = "id";
+				// 		checkbox.align = "center";
+				//
+				// 		// String to store the text we're adding to this cell
+				// 		var cellString;
+				//
+				// 		// Detect which attribute we need to add
+				// 		switch(j)
+				// 		{
+				// 			// If this is cell 0, append a checkbox and skip to next iteration
+				// 			case 0:
+				// 				newCell.appendChild(checkbox);
+				// 				newCell.align = "center";
+				// 				continue;
+				// 			case 1:
+				// 				cellString = jsonObject[i].first_name;
+				// 				break;
+				// 			case 2:
+				// 				cellString = jsonObject[i].last_name;
+				// 				break;
+				// 			case 3:
+				// 				cellString = jsonObject[i].address;
+				// 				break;
+				// 			case 4:
+				// 				cellString = jsonObject[i].email;
+				// 				break;
+				// 			case 5:
+				// 				cellString = jsonObject[i].phone;
+				// 				break;
+				// 			default:
+				// 				break;
+				// 		}
+				//
+				// 		// Not sure if we'll get nulls but just in case
+				// 		if (cellString == null)
+				// 			cellString = "";
+				//
+				// 		// Make a new text node out of cellString
+				// 		var newText = document.createTextNode(cellString);
+				//
+				// 		// Add newText to the current cell
+				// 		newCell.appendChild(newText);
+				//
+				// 	}
 				}
-				// newCookieTest();
-				// cookieTest();
       }
     }
    }

@@ -473,7 +473,7 @@ function saveClick() {
 
 			// Push each cell from the table into args
 			for (var i = 0; i < 5; i++) {
-				newRowString = newRowString.concat("<td>", contactPopup.children[i].children[1].value, "</td>");
+				// newRowString = newRowString.concat("<td>", contactPopup.children[i].children[1].value, "</td>");
 				args.push(contactPopup.children[i].children[1].value);
 			}
 

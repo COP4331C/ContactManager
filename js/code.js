@@ -31,7 +31,7 @@ function doCreateAccount()
 	var password = document.getElementById("signupPW").value;
 	var confirmPass = document.getElementById("confirmPW").value;
 
-	if (password.equals(confirmPass) == false)
+	if (signupPW != confirmPW)
 	{
 		document.getElementById("loginError").innerHTML = "Passwords do not match";
 		return;

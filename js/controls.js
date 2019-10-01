@@ -283,7 +283,7 @@ function updateContact(args)
 	}
 	catch (err)
 	{
-		console.log("SUPER unexpected error");
+
 	}
 
 }
@@ -316,13 +316,14 @@ function createContact(args, user_id)
 				}
 
 				console.log("Contact created successfully");
+				console.log("cid i guess = " + jsonObject.cid);
 				return jsonObject.cid;
 			}
 		}
 	}
 	catch (err)
 	{
-		console.log("SUPER unexpected error");
+
 	}
 }
 

@@ -30,6 +30,12 @@ function cookieTest()
 	alert(tempstring);
 }
 
+function newCookieTest()
+{
+	var cookie = document.cookie;
+	console.log(cookie);
+}
+
 // Refresh the table of contacts based on the userId given.
 function fetchContactList(user_id)
 // function fetchContactList()
@@ -136,6 +142,7 @@ function fetchContactList(user_id)
 
 					}
 				}
+				newCookieTest();
       }
     }
    }

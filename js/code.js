@@ -30,7 +30,7 @@ function timedRefresh(timeoutPeriod) {
 function doCreateAccount()
 {
 	userId = 0;
-	document.getElementById("loginError").innerHTML = "";
+	document.getElementById("signupError").innerHTML = "";
 
 
 	var email = document.getElementById("signupEmail").value;
@@ -39,7 +39,7 @@ function doCreateAccount()
 
 	if (password != confirmPass)
 	{
-		document.getElementById("loginError").innerHTML = "Passwords do not match";
+		document.getElementById("signupError").innerHTML = "Passwords do not match";
 		console.log("Passwords do not match");
 		return;
 	}
@@ -66,12 +66,12 @@ function doCreateAccount()
 					console.log("Unexpected error");
 					console.log(jsonObject.error);
 
-					document.getElementById("loginError").innerHTML = jsonObject.error;
+					document.getElementById("signupError").innerHTML = jsonObject.error;
 
 					return;
 				}
 
-				document.getElementById("loginError").innerHTML = "Created successfuly. Refreshing...";
+				document.getElementById("signupError").innerHTML = "Created successfuly. Refreshing...";
 				timedRefresh(2000);
 
 			}

@@ -376,7 +376,7 @@ function appendRow(args)
 	var newRow = tableRef.insertRow(tableRef.rows.length);
 	newRow.id = args[0]
 
-	numCells = 6;
+	var numCells = 6;
 
 	for (j = 0; j < numCells; j++)
 	{

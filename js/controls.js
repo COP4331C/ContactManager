@@ -253,7 +253,7 @@ function filterTable() {
 function updateContact(args)
 {
 	var jsonPayload = JSON.stringify({cid:args[0], first_name:args[1], last_name:args[2], address:args[3], email:args[4], phone:args[5]});
-	var url = urlBase + 'LAMPAPI/update.' + extension;
+	var url = urlBase + '/LAMPAPI/update.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -291,7 +291,7 @@ function updateContact(args)
 function createContact(args, user_id)
 {
 	var jsonPayload = JSON.stringify({id:user_id, first_name:args[1], last_name:args[2], address:args[3], email:args[4], phone:args[5]});
-	var url = urlBase + 'LAMPAPI/add_contact.' + extension;
+	var url = urlBase + '/LAMPAPI/add_contact.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);

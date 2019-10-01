@@ -1,4 +1,3 @@
-
 var urlBase = 'http://18.222.70.247';
 var extension = "php";
 
@@ -45,7 +44,7 @@ function doCreateAccount()
 		return;
 	}
 
-	var jsonPayload = JSON.stringify({email:email, password:password});
+	var jsonPayload = JSON.stringify({email:email, password:md5(password)});
 	var url = urlBase + '/LAMPAPI/create_account.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -118,7 +117,7 @@ function doLogin()
 	var pass = document.getElementById("loginPW").value;
 
 	// Glue together some json
-	var jsonPayload = JSON.stringify({email:email, password:pass});
+	var jsonPayload = JSON.stringify({email:email, password:md5(pass)});
 	var url = urlBase + '/LAMPAPI/login.' + extension;
 
 	// Prepare to send

@@ -372,6 +372,7 @@ function createContact(args, user_id)
 function appendRow(args)
 {
 	// Reference to the current row
+	var tableRef = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
 	var newRow = tableRef.insertRow(tableRef.rows.length);
 	newRow.id = args[0]
 

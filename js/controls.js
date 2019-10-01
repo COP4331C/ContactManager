@@ -378,15 +378,15 @@ function saveClick() {
 			cid = createContact(args, "1");
 
 			// If our cid was valid, go ahead and add this new row to the frontend
-			if (cid > 0)
-			{
+			// if (cid > 0)
+			// {
 				newRowString = newRowString.concat("<tr id=\"", cid, "\"><td align=\"center\"><input type=\"checkbox\" name=\"check\"/></td>");
 				newRowString = newRowString.concat("</tr>");
 				$('#contactTable').find('tbody').append(newRowString);
-			}
+			//}
 
-			else
-				console.log("guess newContact() failed damn thats crazy...good luck with that");
+		//	else
+			//	console.log("guess newContact() failed damn thats crazy...good luck with that");
 
 
 		}

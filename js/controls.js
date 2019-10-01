@@ -486,18 +486,15 @@ function saveClick() {
 			// Make a new contact in the database, capture cid.
 			args[0] = createContact(args, "1");
 
-			appendRow(args);
 
 			// If our cid was valid, go ahead and add this new row to the frontend
-			// if (cid > 0)
-			// {
-				// newRowString = newRowString.concat("<tr id=\"", cid, "\"><td align=\"center\"><input type=\"checkbox\" name=\"check\"/></td>");
-				// newRowString = newRowString.concat("</tr>");
-				// $('#contactTable').find('tbody').append(newRowString);
-			//}
+			if (cid > 0)
+			{
+				appendRow(args);
+			}
 
-		//	else
-			//	console.log("guess newContact() failed damn thats crazy...good luck with that");
+			else
+				console.log("guess newContact() failed damn thats crazy...good luck with that");
 
 
 		}

@@ -24,6 +24,10 @@ $(function() {
 
 });
 
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+
 function doCreateAccount()
 {
 	userId = 0;
@@ -68,7 +72,8 @@ function doCreateAccount()
 					return;
 				}
 
-				document.getElementById("loginError").innerHTML = "Created successfuly. Redirecting...";
+				document.getElementById("loginError").innerHTML = "Created successfuly. Refreshing...";
+				timedRefresh(2000);
 
 			}
 		}

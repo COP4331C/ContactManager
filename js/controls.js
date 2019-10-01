@@ -434,6 +434,8 @@ function saveClick() {
 			var newRow = tableRef.insertRow(tableRef.rows.length);
 			appendRow(args, newRow);
 
+			intialize({});
+
 			//
 			// else
 			// 	console.log("guess newContact() failed damn thats crazy...good luck with that");

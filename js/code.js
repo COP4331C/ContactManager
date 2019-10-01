@@ -3,9 +3,6 @@ var urlBase = 'http://18.222.70.247';
 var extension = "php";
 
 var userId = 0;
-var contactId = 0;
-var firstName = "";
-var lastName = "";
 
 function goLogin()
 {
@@ -34,6 +31,7 @@ function doCreateAccount()
 	if (password != confirmPass)
 	{
 		document.getElementById("loginError").innerHTML = "Passwords do not match";
+		console.log("Passwords do not match");
 		return;
 	}
 

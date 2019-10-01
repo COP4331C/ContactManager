@@ -374,10 +374,9 @@ function createContact(args, user_id)
 
 // Essentially the same logic used in fetchcontacts, but applied to a single row
 // Could potentially be reused there for neatness, consider this later...
-function appendRow(args, tableRef)
+function appendRow(args, newRow)
 {
 	// Reference to the current row
-	var newRow = tableRef.insertRow(tableRef.rows.length);
 	newRow.id = args[0]
 
 	var numCells = 6;
@@ -493,7 +492,8 @@ function saveClick() {
 			if (args[0] > 0)
 			{
 				var tableRef = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
-				appendRow(args, tableRef);
+				var newRow = tableRef.insertRow(tableRef.rows.length);
+				appendRow(args, newRow);
 			}
 
 			else

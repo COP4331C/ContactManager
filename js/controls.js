@@ -298,6 +298,8 @@ function saveClick() {
 
 		// Otherwise, we must be creating a new contact
 		else {
+			// Initialize args with cid = 0
+			args = [0];
 
 			// Push each cell from the table into args
 			for (var i = 0; i < 5; i++) {

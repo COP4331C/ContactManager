@@ -291,6 +291,8 @@ function saveClick() {
 				args.push(contactPopup.children[i].children[1].value);
 			}
 
+			console.log(args);
+
 		}
 
 		// Otherwise, we must be creating a new contact

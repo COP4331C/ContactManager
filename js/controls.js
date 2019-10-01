@@ -280,36 +280,48 @@ function saveClick() {
 
 	// If the fields are blank, we should really just skip...
 	if (!blank) {
-		// If we're editing an existing contact...
+		// Are we editing an existing contact?
 		if ($("#contactForm").data("editing")) {
+
+			// Grab the row id (which = the contact id)
 			args = [row.id];
 
-			console.log(args);
-
+			// Push each cell from the table into args
 			for (var i = 0; i < 5; i++) {
 				row.cells[i+1].innerText = contactPopup.children[i].children[1].value;
 				args.push(contactPopup.children[i].children[1].value);
 			}
 
-			console.log(args);
-
+			// Push the update to the server
+			updateContact(args);
 		}
 
 		// Otherwise, we must be creating a new contact
 		else {
-			// newContact(args);
 
-			cid = getNextCid();
-			newRowString = newRowString.concat("<tr id=\"", cid, "\"><td align=\"center\"><input type=\"checkbox\" name=\"check\"/></td>");
-			args = [cid];
-
+			// Push each cell from the table into args
 			for (var i = 0; i < 5; i++) {
 				newRowString = newRowString.concat("<td>", contactPopup.children[i].children[1].value, "</td>");
 				args.push(contactPopup.children[i].children[1].value);
 			}
 
-			newRowString = newRowString.concat("</tr>");
-			$('#contactTable').find('tbody').append(newRowString);
+			// Print args for my sake temporarily
+			console.log(args);
+
+			// Make a new contact in the database, capture cid.
+			cid = newContact(args);
+
+			// If our cid was valid, go ahead and add this new row to the frontend
+			if (cid > 0)
+			{
+				newRowString = newRowString.concat("<tr id=\"", cid, "\"><td align=\"center\"><input type=\"checkbox\" name=\"check\"/></td>");
+				newRowString = newRowString.concat("</tr>");
+				$('#contactTable').find('tbody').append(newRowString);
+			}
+
+			else
+				console.log("guess newContact() failed damn thats crazy...good luck with that");
+
 
 		}
 

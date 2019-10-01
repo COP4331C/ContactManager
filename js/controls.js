@@ -141,10 +141,11 @@ function createContact(args, user_id) {
 			{
 				var jsonObject = JSON.parse(xhr.responseText);
 
-				if(jsonObject.hasOwnProperty('error') && jsonObject.error.length > 0)
+				if(jsonObject.hasOwnProperty('cid') && jsonObject.cid <= 0)
 				{
 					console.log("Unexpected error");
 					console.log(jsonObject.error);
+					return -1;
 				}
 
 				console.log("Contact created successfully");

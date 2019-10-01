@@ -328,6 +328,67 @@ function createContact(args, user_id)
 	}
 }
 
+function appendRow(args)
+{
+	// Reference to the current row
+	var newRow = tableRef.insertRow(tableRef.rows.length);
+	newRow.id = args[0]
+
+	for (j = 0; j < numCells; j++)
+	{
+		// Reference to the current cell
+		var newCell = newRow.insertCell(j);
+
+		// Create the checkbox that will be added in the first cell of each row
+		var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+		checkbox.name = "name";
+		checkbox.value = "value";
+		checkbox.id = "id";
+		checkbox.align = "center";
+
+		// String to store the text we're adding to this cell
+		var cellString;
+
+		// Detect which attribute we need to add
+		switch(j)
+		{
+			// If this is cell 0, append a checkbox and skip to next iteration
+			case 0:
+				newCell.appendChild(checkbox);
+				continue;
+			case 1:
+				cellString = args[1];
+				break;
+			case 2:
+				cellString = args[2];
+				break;
+			case 3:
+				cellString = args[3];
+				break;
+			case 4:
+				cellString = args[4];
+				break;
+			case 5:
+				cellString = args[5];
+				break;
+			default:
+				break;
+		}
+
+		// Not sure if we'll get nulls but just in case
+		if (cellString == null)
+			cellString = "";
+
+		// Make a new text node out of cellString
+		var newText = document.createTextNode(cellString);
+
+		// Add newText to the current cell
+		newCell.appendChild(newText);
+
+	}
+}
+
 function saveClick() {
 	var table = document.getElementById("contactTable");
 	var row = $("#contactForm").data("row");
@@ -376,14 +437,16 @@ function saveClick() {
 			console.log(args);
 
 			// Make a new contact in the database, capture cid.
-			cid = createContact(args, "1");
+			args[0] = createContact(args, "1");
+
+			appendRow(args);
 
 			// If our cid was valid, go ahead and add this new row to the frontend
 			// if (cid > 0)
 			// {
-				newRowString = newRowString.concat("<tr id=\"", cid, "\"><td align=\"center\"><input type=\"checkbox\" name=\"check\"/></td>");
-				newRowString = newRowString.concat("</tr>");
-				$('#contactTable').find('tbody').append(newRowString);
+				// newRowString = newRowString.concat("<tr id=\"", cid, "\"><td align=\"center\"><input type=\"checkbox\" name=\"check\"/></td>");
+				// newRowString = newRowString.concat("</tr>");
+				// $('#contactTable').find('tbody').append(newRowString);
 			//}
 
 		//	else

@@ -86,7 +86,9 @@ function fetchContactList()
 				for (i = 0; i < numContacts; i++)
 				{
 					// Modularization attempt
-					var args[0] = jsonObject[i].cid;
+					var args;
+					args = [0];
+					args[0] = jsonObject[i].cid;
 					args[1] = jsonObject[i].first_name;
 					args[2] = jsonObject[i].last_name;
 					args[3] = jsonObject[i].address;

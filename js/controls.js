@@ -336,6 +336,7 @@ function appendRow(args, newRow) {
 			// If this is cell 0, append a checkbox and skip to next iteration
 			case 0:
 				newCell.appendChild(checkbox);
+				newCell.align = "center";
 				continue;
 			case 1:
 				cellString = args[1];

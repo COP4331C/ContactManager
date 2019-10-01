@@ -372,10 +372,11 @@ function createContact(args, user_id)
 	}
 }
 
-function appendRow(args)
+// Essentially the same logic used in fetchcontacts, but applied to a single row
+// Could potentially be reused there for neatness, consider this later...
+function appendRow(args, tableRef)
 {
 	// Reference to the current row
-	var tableRef = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
 	var newRow = tableRef.insertRow(tableRef.rows.length);
 	newRow.id = args[0]
 
@@ -490,7 +491,10 @@ function saveClick() {
 
 			// If our cid was valid, go ahead and add this new row to the frontend
 			if (args[0] > 0)
-				appendRow(args);
+			{
+				var tableRef = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
+				appendRow(args, tableRef);
+			}
 
 			else
 				console.log("guess newContact() failed damn thats crazy...good luck with that");

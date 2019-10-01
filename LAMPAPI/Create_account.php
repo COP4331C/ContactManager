@@ -27,18 +27,18 @@ $sql = "INSERT INTO user_list (first_name, last_name, phone, email, other_info, 
 
 if($conn->query($sql) === TRUE)
 {
-  echo "New record created successfully";
+  //echo "New record created successfully";
 
   $row = $result->fetch->fetch_assoc();
   $first_name = $row["first_name"];
   $last_name = $row["last_name"];
-  $phone = $row["phone"]; 
+  $phone = $row["phone"];
   $email = $row["email"];
- 
+
 
   returnWithInfo($first_name, $last_name, $phone, $email);
 }
-else 
+else
 {
    returnWithError("Account Creation Failed!" )
 }

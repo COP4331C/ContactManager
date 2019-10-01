@@ -24,14 +24,14 @@ else
 
 	if($conn->query($sql) === TRUE)
 	{
-  	 echo "New record created successfully";
+  	 //echo "New record created successfully";
 
   	//$row = $result->fetch->fetch_assoc();
   	//$first_name = $row["first_name"];
   	$first_name = $inData["first_name"];
   	//$last_name = $row["last_name"];
   	$last_name = $inData["last_name"];
-  	//$phone = $row["phone"]; 
+  	//$phone = $row["phone"];
   	$phone = $inData["phone"];
   	//$email = $row["email"];
   	$email = $inData["email"];
@@ -41,7 +41,7 @@ else
 
   	returnWithInfo($first_name, $last_name, $phone, $email, $pass, $address);
 	}
-	
+
 	else
 	{
   	returnWithError("Account Creation Failed!");

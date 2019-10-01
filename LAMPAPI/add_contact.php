@@ -26,7 +26,7 @@ $conn = new mysqli($servername, $uname, $pword, $dbname);
     $result = $conn->query($sql2);
     if($result->num_rows > 0)
     {
-      echo "New record created successfully";
+      //echo "New record created successfully";
       $row = $result->fetch_assoc();
       $cid = $row["cid"];
       //echo $cid ;
@@ -38,17 +38,17 @@ $conn = new mysqli($servername, $uname, $pword, $dbname);
       $address = $inData["address"];
       $conn->close();
     }
-    
+
     returnWithInfo($id,$cid, $firstName, $lastName, $phone, $email, $address);
-    
+
   }
-  else 
+  else
   {
       returnWithError("Contact Creation failure");
   }
-  
-  
-  
+
+
+
 //}
 
 function getRequestInfo()

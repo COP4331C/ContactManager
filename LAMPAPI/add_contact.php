@@ -29,6 +29,7 @@ $conn = new mysqli($servername, $uname, $pword, $dbname);
       echo "New record created successfully";
       $row = $result->fetch_assoc();
       $cid = $row["cid"];
+      echo $cid ;
       $id = $inData["id"];
       $firstName = $inData["first_name"];
       $lastName = $inData["last_name"];

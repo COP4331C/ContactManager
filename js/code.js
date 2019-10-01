@@ -24,17 +24,20 @@ function goCreateAccount()
 function doCreateAccount()
 {
 	userId = 0;
-	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("loginError").innerHTML = "";
 
-	var login = document.getElementById("cloginName").value;
-	var password = document.getElementById("cloginPassword").value;
-	var phone = document.getElementById("phone").value;
-	var first_name = document.getElementById("firstName").value;
-	var last_name = document.getElementById("lastName").value;
-	var address = document.getElementById("address").value;
 
-// 	var jsonPayload = '{"first_Name" : "' + first_Name + '", "last_Name" : "' + last_Name + '", "phone" : "' + phone + '", "email" : "' + login + '", "password" : "' + password + '", "address" : "' + address + '"}';
-	var jsonPayload = JSON.stringify({first_name:first_name, last_name:last_name, phone:phone, email:login, password:password, address:address});
+	var email = document.getElementById("signupEmail").value;
+	var password = document.getElementById("signupPW").value;
+	var confirmPass = document.getElementById("confirmPW").value;
+
+	if (password.equals(confirmPass) == false)
+	{
+		document.getElementById("loginError").innerHTML = "Passwords do not match";
+		return;
+	}
+
+	var jsonPayload = JSON.stringify({email:email, password:password});
 	var url = urlBase + '/LAMPAPI/create_account.' + extension;
 
 	var xhr = new XMLHttpRequest();
@@ -48,36 +51,25 @@ function doCreateAccount()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				alert(xhr.responseText);
-
 				var jsonObject = JSON.parse( xhr.responseText );
 
-				userId = jsonObject.id;
-				alert(userId);
-
-				if( userId < 1 )
+				if(jsonObject.hasOwnProperty('error') && jsonObject.error.length > 0)
 				{
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					// document.getElementById("contactSearchResult").innerHTML = "No contacts were found.";
+					console.log("Unexpected error");
+					console.log(jsonObject.error);
+
+					document.getElementById("loginError").innerHTML = jsonObject.error;
+
 					return;
 				}
 
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
+				else
+				{
+					document.getElementById("loginError").innerHTML = "Created successfuly. Redirecting...";
 
-				document.getElementById("userName").innerHTML = firstName + " " + lastName;
-
-				document.getElementById("cloginName").value = "";
-				document.getElementById("cloginPassword").value = "";
-				document.getElementById("phone").value = "";
-				document.getElementById("firstName").value = "";
-				document.getElementById("lastName").value = "";
-				document.getElementById("address").value = "";
-
-				hideOrShow( "loginDiv", false);
-				hideOrShow("welcomeDiv", false);
-				hideOrShow("createDiv", false);
-				hideOrShow( "loggedInDiv", true);
-				hideOrShow( "accessUIDiv", true);
+					doLogin();
+				}
 
 			}
 		}
@@ -86,21 +78,6 @@ function doCreateAccount()
 	{
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-}
-
-function goBackHome()
-{
-	// document.getElementById("loginName").value = "";
-	// document.getElementById("loginPassword").value = "";
-	// document.getElementById("cloginName").value = "";
-	// document.getElementById("cloginPassword").value = "";
-	// document.getElementById("phone").value = "";
-	// document.getElementById("firstName").value = "";
-	// document.getElementById("lastName").value = "";
-	// document.getElementById("address").value = "";
-	hideOrShow("loginDiv", false);
-	hideOrShow("welcomeDiv", true);
-	hideOrShow("createDiv", false);
 }
 
 // Creates a cookie to store a user's session info
@@ -130,11 +107,11 @@ function getCookie(cname)
 function doLogin()
 {
 	userId = 0;
-	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("loginError").innerHTML = "";
 
 	// Grab the user's email + pass from the html (variable names pending)
-	var email = document.getElementById("email").value;
-	var pass = document.getElementById("password").value;
+	var email = document.getElementById("loginEmail").value;
+	var pass = document.getElementById("loginPW").value;
 
 	// Glue together some json
 	var jsonPayload = JSON.stringify({email:email, password:pass});
@@ -162,12 +139,12 @@ function doLogin()
 				userId = jsonObject.id;
 				if (userId < 1)
 				{
-					document.getElementById("loginResult").innerHTML = jsonObject.error;
+					document.getElementById("loginError").innerHTML = jsonObject.error;
 					return;
 				}
 
 				// Otherwise, we successfuly got a user from the database.
-				document.getElementById("loginResult").innerHTML = "Success";
+				document.getElementById("loginError").innerHTML = "Success";
 
 				// Create a sitewide cookie to store this info
 				createCookie("id", userId.toString());
@@ -175,8 +152,8 @@ function doLogin()
 				var tempstring = getCookie("user_id");
 
 				// Reset the username and password just for cleanliness
-				document.getElementById("email").value = "";
-				document.getElementById("password").value = "";
+				document.getElementById("loginEmail").value = "";
+				document.getElementById("loginPW").value = "";
 
 				// Go to contacts.html
 				window.location.replace(urlBase + "/contacts.html");

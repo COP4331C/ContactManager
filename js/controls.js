@@ -231,7 +231,7 @@ function deleteContact(contact_id, user_id) {
 	}
 	catch (err)
 	{
-		console.log(err);
+		
 	}
 
 }

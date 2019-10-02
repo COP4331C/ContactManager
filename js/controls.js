@@ -31,7 +31,6 @@ function timedKickOut(redirectTime) {
 // Refresh the table of contacts based on the user id saved in the user's cookie
 function fetchContactList() {
 	var user_id = getCookie("id");
-	var pass = getCookie("pass");
 
 	if (user_id == "")
 	{
@@ -48,7 +47,7 @@ function fetchContactList() {
 	console.log("Fetching contacts...");
 
 	// TEMPORARY user id Test
-	var jsonPayload = JSON.stringify({id:user_id, pass:pass});
+	var jsonPayload = JSON.stringify({id:user_id});
 
   var url = urlBase + '/LAMPAPI/fetchContacts.' + extension;
 	var xhr = new XMLHttpRequest();
@@ -466,7 +465,6 @@ function signOut() {
 	// Clear cookies by forcing expiration
 	document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
 	document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
-	document.cookie = "pass=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
 
 	// Redirect to login page
 	window.location.replace(urlBase);

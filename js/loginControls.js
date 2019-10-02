@@ -101,7 +101,7 @@ function doLogin(creationEmail, creationPass) {
     email = document.getElementById("loginEmail").value;
     pass = document.getElementById("loginPW").value;
   }
-  
+
   console.log("Email: " + email + ", Password: " + pass);
 
 	// Glue together some json
@@ -195,10 +195,9 @@ function getCookie(cname)
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
     }
-    // if (c.indexOf(name) == 0)
-		// {
-      return c.substring(name.length, c.length);
-    // }
+
+    return c.substring(name.length, c.length);
+
   }
   return "";
 }

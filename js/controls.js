@@ -41,7 +41,7 @@ function fetchContactList() {
 	}
 
 	console.log("Setting 'Signed in as' display");
-	document.getElementById.("email_display").innerHTML = getCookie("email");
+	document.getElementById("email_display").innerHTML = getCookie("email");
 
 	console.log("Fetching contacts...");
 

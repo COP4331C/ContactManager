@@ -130,7 +130,7 @@ function doLogin(email, pass) {
 				var userId = jsonObject.id;
 				if (userId < 1)
 				{
-					document.getElementById("loginError").innerHTML = jsonObject.error;
+					document.getElementById("loginError").innerHTML = "Email/Password combination invalid";
 					console.log("User doesn't exist");
 					return;
 				}

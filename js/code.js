@@ -164,6 +164,9 @@ function doLogin()
 				// Save the email for "signed in as:" display
 				createCookie("email", email);
 
+				// Save the hashed password
+				createCookie("pass", md5(pass));
+
 				// var tempstring = getCookie("user_id");
 
 				// Reset the username and password just for cleanliness

@@ -24,9 +24,20 @@ function getCookie(cname)
   return "";
 }
 
+function timedKickOut(timeoutPeriod) {
+	setTimeout("window.location.replace(urlBase);",timeoutPeriod);
+}
+
 // Refresh the table of contacts based on the user id saved in the user's cookie
 function fetchContactList() {
 	var user_id = getCookie("id");
+
+	if (user_id == "")
+	{
+		console.log("Not signed in!");
+		alert("You have not signed in! Redirecting to login...");
+		timedKickOut(2000);
+	}
 
 	console.log("Fetching contacts...");
 
@@ -434,7 +445,7 @@ function saveClick() {
 			var newRow = tableRef.insertRow(tableRef.rows.length);
 			appendRow(args, newRow);
 
-			intialize({});
+			// intialize({});
 
 			//
 			// else
@@ -443,4 +454,13 @@ function saveClick() {
 
 		$("#contactForm").modal('hide');
 	}
+}
+
+function signOut() {
+	// Clear cookie by forcing expiration
+	document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+
+	// Redirect to login page
+	window.location.replace(urlBase);
+
 }

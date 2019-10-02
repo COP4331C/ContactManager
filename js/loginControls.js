@@ -1,9 +1,6 @@
 var urlBase = 'https://www.tellmeyour.name';
 var extension = "php";
 
-var userId = 0;
-
-
 $(function() {
 
     $('#loginSubmit').click(function(e){
@@ -80,13 +77,8 @@ function doCreateAccount()
 				document.getElementById("signupError").innerHTML = "Created successfuly! Logging in...";
 				// timedRefresh(2000);
 
-				// Override login fields
-				document.getElementById("loginEmail").innerHTML = email;
-				document.getElementById("loginPW").innerHTML = signupPW;
-
 				// Force a login
-				doLogin();
-
+				doLogin(email, password);
 
 			}
 		}
@@ -97,14 +89,18 @@ function doCreateAccount()
 	}
 }
 
-function doLogin()
-{
-	userId = 0;
-	document.getElementById("loginError").innerHTML = "";
-
-	// Grab the user's email + pass from the html (variable names pending)
+function doLogin() {
+	// Grab the user's email + pass from the html
 	var email = document.getElementById("loginEmail").value;
 	var pass = document.getElementById("loginPW").value;
+
+	// Run the ACTUAL doLogin() function
+	doLogin(email, pass);
+}
+
+function doLogin(email, pass) {
+	document.getElementById("loginError").innerHTML = "";
+
 
 	// Glue together some json
 	var jsonPayload = JSON.stringify({email:email, password:md5(pass)});
@@ -131,7 +127,7 @@ function doLogin()
 				var jsonObject = JSON.parse(xhr.responseText);
 
 				// Get UID from json. If json does not have an updated UID, print error.
-				userId = jsonObject.id;
+				var userId = jsonObject.id;
 				if (userId < 1)
 				{
 					document.getElementById("loginError").innerHTML = jsonObject.error;

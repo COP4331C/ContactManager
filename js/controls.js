@@ -35,8 +35,8 @@ function fetchContactList() {
 	if (user_id == "")
 	{
 		console.log("Not signed in!");
-		alert("You have not signed in! Redirecting to login...");
 		timedKickOut(2000);
+		alert("You have not signed in! Redirecting to login...");
 	}
 
 	console.log("Fetching contacts...");

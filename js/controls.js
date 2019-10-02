@@ -24,8 +24,8 @@ function getCookie(cname)
   return "";
 }
 
-function timedKickOut(timeoutPeriod) {
-	setTimeout("window.location.replace(urlBase);",timeoutPeriod);
+function timedRefresh(redirectTime) {
+	setTimeout("location.href = " + urlBase + ";",redirectTime);
 }
 
 // Refresh the table of contacts based on the user id saved in the user's cookie

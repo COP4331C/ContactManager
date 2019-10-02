@@ -12,11 +12,11 @@ if ($conn->connect_error)
 else
 {
 	$id = $inData["id"];
-	$sql = "SELECT * FROM contact_list where id='" . $id  . "'";
+	$sql = "SELECT * FROM contact_list where id='" . $id  . "' and pass = '" . $pass . "'";
 		//$result = $conn->query($sql);
 	$result = mysqli_query($conn, $sql);
     	$json_array = array();
-	
+
 	if($result->num_rows > 0 )
 	{
    		while($row = mysqli_fetch_assoc($result))
@@ -27,12 +27,12 @@ else
     		returnWithInfo(json_encode($json_array));
 		$conn->close();
 	}
-	
+
 	else
 	{
-		returnWithError('Error there were no contacts for the user id = ' . $id . ' found.');
+		returnWithError('Error there were no contacts for the user id = ' . $id . ' and password = (hidden) found.');
 	}
-	
+
 }
 
 

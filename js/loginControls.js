@@ -101,6 +101,7 @@ function doLogin() {
 function doLogin(email, pass) {
 	document.getElementById("loginError").innerHTML = "";
 
+  console.log("Email: " + email + ", Password: " + pass);
 
 	// Glue together some json
 	var jsonPayload = JSON.stringify({email:email, password:md5(pass)});

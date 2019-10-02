@@ -36,6 +36,7 @@ function fetchContactList() {
 	{
 		console.log("Not signed in!");
 		timedKickOut(2000);
+		window.location.replace(urlBase);
 		alert("You have not signed in! Redirecting to login...");
 	}
 

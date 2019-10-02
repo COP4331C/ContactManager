@@ -89,18 +89,19 @@ function doCreateAccount()
 	}
 }
 
-function doLogin() {
-	// Grab the user's email + pass from the html
-	var email = document.getElementById("loginEmail").value;
-	var pass = document.getElementById("loginPW").value;
 
-	// Run the ACTUAL doLogin() function
-	doLogin(email, pass);
-}
-
-function doLogin(email, pass) {
+function doLogin(creationEmail, creationPass) {
 	document.getElementById("loginError").innerHTML = "";
 
+  var email = creationEmail;
+  var pass = creationPass;
+
+  if (email == null || pass == null)
+  {
+    email = document.getElementById("loginEmail").value;
+    pass = document.getElementById("loginPW").value;
+  }
+  
   console.log("Email: " + email + ", Password: " + pass);
 
 	// Glue together some json

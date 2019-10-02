@@ -37,9 +37,6 @@ function doCreateAccount()
 	var password = document.getElementById("signupPW").value;
 	var confirmPass = document.getElementById("confirmPW").value;
 
-	// Save the email for "signed in as:" display 
-	createCookie("email", email);
-
 	if (email == "")
 	{
 		document.getElementById("signupError").innerHTML = "Enter an email address";
@@ -161,8 +158,11 @@ function doLogin()
 				// Otherwise, we successfuly got a user from the database.
 				document.getElementById("loginError").innerHTML = "Success";
 
-				// Create a sitewide cookie to store this info
+				// Save id into a sitewide cookie
 				createCookie("id", userId.toString());
+
+				// Save the email for "signed in as:" display
+				createCookie("email", email);
 
 				// var tempstring = getCookie("user_id");
 

@@ -40,6 +40,9 @@ function fetchContactList() {
 		alert("You have not signed in! Redirecting to login...");
 	}
 
+	console.log("Setting 'Signed in as' display");
+	document.getElementById.("email_display").innerHTML = getCookie("email");
+
 	console.log("Fetching contacts...");
 
 	// TEMPORARY user id Test
@@ -458,8 +461,9 @@ function saveClick() {
 }
 
 function signOut() {
-	// Clear cookie by forcing expiration
+	// Clear cookies by forcing expiration
 	document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+	document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
 
 	// Redirect to login page
 	window.location.replace(urlBase);

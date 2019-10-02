@@ -1,4 +1,4 @@
-var urlBase = 'http://18.222.70.247';
+var urlBase = 'https://www.tellmeyour.name';
 var extension = "php";
 
 var userId = 0;

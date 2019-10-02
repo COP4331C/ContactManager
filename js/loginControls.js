@@ -77,8 +77,16 @@ function doCreateAccount()
 					return;
 				}
 
-				document.getElementById("signupError").innerHTML = "Created successfuly. Refreshing...";
-				timedRefresh(2000);
+				document.getElementById("signupError").innerHTML = "Created successfuly! Logging in...";
+				// timedRefresh(2000);
+
+				// Override login fields
+				document.getElementById("loginEmail").innerHTML = email;
+				document.getElementById("loginPW").innerHTML = signupPW;
+
+				// Force a login
+				doLogin();
+
 
 			}
 		}
@@ -87,30 +95,6 @@ function doCreateAccount()
 	{
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-}
-
-// Creates a cookie to store a user's session info
-function createCookie(name, value)
-{
-	document.cookie = name + "=" + value + ";path=/";
-}
-
-function getCookie(cname)
-{
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    // if (c.indexOf(name) == 0)
-		// {
-      return c.substring(name.length, c.length);
-    // }
-  }
-  return "";
 }
 
 function doLogin()
@@ -196,6 +180,32 @@ function doLogout()
 	hideOrShow( "loginDiv", false);
 	hideOrShow("welcomeDiv", true);
 }
+
+// Creates a cookie to store a user's session info
+function createCookie(name, value)
+{
+	document.cookie = name + "=" + value + ";path=/";
+}
+
+function getCookie(cname)
+{
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    // if (c.indexOf(name) == 0)
+		// {
+      return c.substring(name.length, c.length);
+    // }
+  }
+  return "";
+}
+
+
 
 function hideOrShow( elementId, showState )
 {

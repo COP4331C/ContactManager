@@ -24,7 +24,7 @@ function getCookie(cname)
   return "";
 }
 
-function timedRefresh(redirectTime) {
+function timedKickOut(redirectTime) {
 	setTimeout("location.href = " + urlBase + ";",redirectTime);
 }
 
